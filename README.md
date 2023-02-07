@@ -26,7 +26,16 @@ Sonos stati effettuati tre diversi esperimenti, ognuno con un approccio diverso:
 >
 
 ## Feature Extraction
+Il primo esperimento consiste nell'utilizzare una rete neurale pre-addestrata per estrarre le caratteristiche visive dalle immagini e poi utilizzare un classificatore SVM Lineare per classificare le immagini in base al sesso.
 
+Per fare ciò è stato utilizzato il dataset di partenza, che è stato suddiviso in due parti: una per il training e una per il testing.
+
+Il modus operandi è il seguente:
+1. Caricamento del dataset di training e di testing
+2. Caricamento della rete neurale pre-addestrata e ridimensionamento delle immagini
+3. Estrazione delle features dalle immagini estrapolando i dati dal penultimo layer della rete neurale
+4. Training del classificatore SVM Lineare
+5. Test del classificatore SVM Lineare
 
 ### **AlexNet**
 AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
@@ -62,7 +71,7 @@ VGG16 prende in input immagini RGB di dimensione 224x224.
 
 La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
-### SVM
+### **SVM Lineare**
 
 
 ### Risultati
