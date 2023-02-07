@@ -28,8 +28,16 @@ Sonos stati effettuati tre diversi esperimenti, ognuno con un approccio diverso:
 ## Feature Extraction
 
 
-### AlexNet
+### **AlexNet**
+AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
+AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
+![](img/alexnet_structure.png)
+
+Nel primo strato si riceve l'immagine come input e la si ridimensiona per adattarsi alla rete neurale, successivamente i cinque strati convolutivi itilizzano filtri per estrarre le caratteristiche visive dall'immagine.  
+Ogni strato convolutivo utilizza un insieme di filtri che scorrono sull'immagine eseguendo una combinazione lineare dei valori dei pixel e producendo una nuova immaigne chiamata "*feature map*".  
+Gli strati fully connected sono due e hanno la funzione di classificare l'immagine in base alle caratteristiche estratte dai layer convolutivi.  
+Il layer di output è un layer softmax che restituisce la probabilità che l'immagine appartenga ad una delle 2 classi.
 
 ### ResNet
 
