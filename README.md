@@ -39,11 +39,28 @@ Ogni strato convolutivo utilizza un insieme di filtri che scorrono sull'immagine
 Gli strati fully connected sono due e hanno la funzione di classificare l'immagine in base alle caratteristiche estratte dai layer convolutivi.  
 Il layer di output è un layer softmax che restituisce la probabilità che l'immagine appartenga ad una delle 2 classi.
 
-### ResNet
+### **ResNet**
 
+ResNet è una rete neurale convolutiva presentata nel 2015 da Microsoft Research Asia. Con i suoi 152 livelli, la versione completa di ResNet è un’architettura piuttosto complessa, quindi abbiamo optato per utilizzare la versione ResNet18.  
+Per allenare un così alto numero di livelli utilizza un metodo detto "skip connection". Il quale prende i dati trasferiti al livello successivo e lo aggiungono anche al output di quelli precedenti come mostrato nella figura sottostante:
 
-### VGG16
+![](img/resnet_structure.png)
 
+ResNet è organizzata in **blocchi residuali** *(residual block)*. 
+
+Durante la **back propagation** e il **calcolo del metodo di ottimizzazione** (es. gradiente stocastico discendente) se il numero di livelli è troppo grande, il gradiente può diventare:
+- molto grande (**exploding gradient**): causa problemi d’instabilità e genera parametri (weights) che superano quelli gestibili dal computer
+- estremamente piccolo (**vanishing gradient**): determina un aggiornamento minimo dei pesi e causa un rallentamento del processo di training.
+
+Grazie alla sua struttura, ResNet invece di aspettare che il gradiente si propaghi indietro (back propagation) un livello alla volta, il percorso di skip connection gli consente di raggiungere i nodi iniziali efficacemente saltando quelli intermedi.
+
+### **VGG16**
+VGG16 è un modello di rete neurale convoluzionale presentato nel 2014 dall'Università di Oxford.
+VGG16 prende in input immagini RGB di dimensione 224x224.
+
+![](img/vgg_structure.png)
+
+La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
 ### SVM
 
