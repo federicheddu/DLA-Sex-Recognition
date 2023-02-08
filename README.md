@@ -14,28 +14,39 @@ Sonos stati effettuati tre diversi esperimenti, ognuno con un approccio diverso:
 - Fine Tuning di una rete pre-addestrata
 - Creazione di una rete da zero
 
-> Table of Contents
-> 1. [Feature Extraction](#feature-extraction)
+<br>
+
+> ### **Table of Contents**
+> 1. [Stato dell'arte](#stato-arte)
 >    - [AlexNet](#alexnet)
 >    - [ResNet](#resnet)
 >    - [VGG16](#vgg16)
 >    - [SVM](#svm)
+> 1. [Feature Extraction](#feature-extraction)
+>    - [Caricamento dei dati](#fe-dataset)
+>    - [Caricamento delle reti](#fe-reti)
 >    - [Risultati](#fe-risultati)
 > 1. [Fine Tuning](#fine-tuning)
-> 1. [Creazione di una rete da zero](#creazione-di-una-rete-da-zero)
+>    - [Caricamento dei dati](#ft-dataset)
+>    - [Caricamento delle rete](#ft-reti)
+>    - [Fine Tuning](#ft-finetuning)
+>    - [Risultati](#ft-risultati)
+> 1. [Creazione di una rete da zero](#nuova-rete)
 >
 
-## Feature Extraction
-Il primo esperimento consiste nell'utilizzare una rete neurale pre-addestrata per estrarre le caratteristiche visive dalle immagini e poi utilizzare un classificatore SVM Lineare per classificare le immagini in base al sesso.
+<br><br>
 
-Per fare ciò è stato utilizzato il dataset di partenza, che è stato suddiviso in due parti: una per il training e una per il testing.
+---
 
-Il modus operandi è il seguente:
-1. Caricamento del dataset di training e di testing
-2. Caricamento della rete neurale pre-addestrata e ridimensionamento delle immagini
-3. Estrazione delle features dalle immagini estrapolando i dati dal penultimo layer della rete neurale
-4. Training del classificatore SVM Lineare
-5. Test del classificatore SVM Lineare
+<br>
+
+<a name="stato-arte"></a>
+
+## **Stato dell'arte**
+
+<br>
+
+<a name="alexnet"></a>
 
 ### **AlexNet**
 AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
@@ -47,6 +58,10 @@ Nel primo strato si riceve l'immagine come input e la si ridimensiona per adatta
 Ogni strato convolutivo utilizza un insieme di filtri che scorrono sull'immagine eseguendo una combinazione lineare dei valori dei pixel e producendo una nuova immaigne chiamata "*feature map*".  
 Gli strati fully connected sono due e hanno la funzione di classificare l'immagine in base alle caratteristiche estratte dai layer convolutivi.  
 Il layer di output è un layer softmax che restituisce la probabilità che l'immagine appartenga ad una delle 2 classi.
+
+<br>
+
+<a name="resnet"></a>
 
 ### **ResNet**
 
@@ -63,6 +78,10 @@ Durante la **back propagation** e il **calcolo del metodo di ottimizzazione** (e
 
 Grazie alla sua struttura, ResNet invece di aspettare che il gradiente si propaghi indietro (back propagation) un livello alla volta, il percorso di skip connection gli consente di raggiungere i nodi iniziali efficacemente saltando quelli intermedi.
 
+<br>
+
+<a name="vgg16"></a>
+
 ### **VGG16**
 VGG16 è un modello di rete neurale convoluzionale presentato nel 2014 dall'Università di Oxford.
 VGG16 prende in input immagini RGB di dimensione 224x224.
@@ -70,6 +89,10 @@ VGG16 prende in input immagini RGB di dimensione 224x224.
 ![](img/vgg_structure.png)
 
 La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
+
+<br>
+
+<a name="svm"></a>
 
 ### **SVM Lineare**
 Le Support Vector Machine, o SVM, sono modelli di classificazione che mirano a trovare una linea di separazione delle classi che massimizzi il margine tra le classi stesse. 
@@ -81,10 +104,48 @@ La figura mostra qual è la linea di demarcazione che massimizza il margine tra 
 I vettori di supporto rappresentano i valori di una classe più vicini alla linea di demarcazione e i valori più vicini all'altra classe. Fondamentalmente, questi sono i valori più difficili da essere classificati.
 Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice: maggiore è il margine, maggiore è la distanza tra le classi, e quindi il potenziale di  confusione.
 
-### Risultati
+<br><br>
 
+---
 
-## Fine Tuning
+<br>
 
+<a name="feature-extraction"></a>
 
-## Creazione di una rete da zero
+## **Feature Extraction**
+Il primo esperimento consiste nell'utilizzare una rete neurale pre-addestrata per estrarre le caratteristiche visive dalle immagini e poi utilizzare un classificatore SVM Lineare per classificare le immagini in base al sesso.
+
+Per fare ciò è stato utilizzato il dataset di partenza, che è stato suddiviso in due parti: una per il training e una per il testing.
+
+Il modus operandi è il seguente:
+1. Caricamento del dataset di training e di testing
+2. Caricamento della rete neurale pre-addestrata e ridimensionamento delle immagini
+3. Estrazione delle features dalle immagini estrapolando i dati dal penultimo layer della rete neurale
+4. Training del classificatore SVM Lineare
+5. Test del classificatore SVM Lineare
+
+<br>
+
+<a name="fe-risultati"></a>
+
+### **Risultati**
+
+<br><br>
+
+---
+
+<br>
+
+<a name="fine-tuning"></a>
+
+## **Fine Tuning**
+
+<br><br>
+
+---
+
+<br>
+
+<a name="nuova-rete"></a>
+
+## **Creazione di una rete da zero**
