@@ -74,6 +74,14 @@ int main() {
                 &image.features[23], &image.features[24], &image.features[25], &image.features[26], &image.features[27], &image.features[28], &image.features[29], &image.features[30],
                 &image.features[31], &image.features[32], &image.features[33], &image.features[34], &image.features[35], &image.features[36], &image.features[37], &image.features[38]);
             
+            // parse data
+            if(image.class == -1)
+                image.class = 0;
+            for(int z=0; z<NUM_FEATURES; z++) {
+                if(image.features[z] == -1)
+                    image.features[z] = 0;
+            }
+            
             if(image.class == j) {
                 // write the all his features in a live of the file
                 for(int z=0; z<NUM_FEATURES; z++) {

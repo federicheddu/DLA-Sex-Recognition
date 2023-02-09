@@ -7,7 +7,6 @@
 
 #define NUM_SPLITS 3
 #define NUM_CLASSES 2
-#define NUM_FEATURES 39
 
 typedef enum {TRAIN, VAL, TEST} Split;
 typedef enum {FEMALE, MALE} Class;
@@ -22,8 +21,7 @@ int main() {
 
     // Trash variables
     int aux_num;
-    char aux_char;
-    float progress;
+    char aux_char[STR_LEN];
     // String to store system calls
     char command[COMMAND_LEN];
     char folders[NUM_SPLITS][STR_LEN] = {"TrainSet", "ValSet", "TestSet"};
@@ -32,7 +30,6 @@ int main() {
     // File pointers
     FILE *split_file = NULL;
     FILE *class_file = NULL;
-    FILE *features_file = NULL;
 
 
     // Open split file
@@ -43,7 +40,6 @@ int main() {
         fscanf(split_file, "%s %d", dataset[i].nome, &dataset[i].split);
     // Close file
     fclose(split_file);
-    printf("\nSplit file read!\n");
 
     // Open class file
     class_file = fopen("./metadata/list_attr_celeba.txt", "r");
@@ -56,7 +52,6 @@ int main() {
         fscanf(class_file, "%*s %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d", &dataset[i].class);
     // Close file
     fclose(class_file);
-    printf("\nClass file read!\n");
 
     // Create directories
     for(int i=0; i<NUM_SPLITS; i++) {
@@ -67,26 +62,18 @@ int main() {
             system(command);
         }
     }
-    printf("\nDirectories created!\n");
 
     // Move images
-    printf("\nMoving images...\n");
-    aux_num = 0;
-
     for(int i=0; i<RECORDS; i++) {
 
         // Progress bar
-        aux_num++;
-        progress = (aux_num/(float)RECORDS)*100;
-        printf("PROGRESS: %2.2f%%", progress);
-        if(progress < 100) printf("\r");
+        printf("PROGRESS: %2.2f%%\r", ((i+1)/(float)RECORDS));
 
         // Command to move image
         sprintf(command, "mv ./dataset/%s ./dataset/%s/%d", dataset[i].nome, folders[dataset[i].split], dataset[i].class == MALE ? MALE : FEMALE);
         // Execute command
         system(command);
     }
-    printf("\nImages moved!\n");
 
     return 0;
 }
