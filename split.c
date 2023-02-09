@@ -62,6 +62,15 @@ int main() {
     // Close file
     fclose(class_file);
 
+    // -1 to 0 in features
+    for(int i = 0; i < RECORDS; i++) {
+        for(int j = 0; j < NUM_FEATURES; j++) {
+            if(dataset[i].features[j] == -1) {
+                dataset[i].features[j] = 0;
+            }
+        }
+    }
+
 
     printf("\nDo you need to move the files and create directories? (y/n) ");
     scanf(" %c", &aux_char);
