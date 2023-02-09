@@ -63,7 +63,7 @@ int main() {
     fclose(class_file);
 
 
-    printf("Do you need to move the files and create directories? (y/n) ");
+    printf("\nDo you need to move the files and create directories? (y/n) ");
     scanf(" %c", &aux_char);
 
     if(aux_char == 'y') {
@@ -76,57 +76,70 @@ int main() {
                 system(command);
             }
         }
+        printf("\nDirectories created!\n");
 
         // Move images
         printf("\nMoving images...\n");
+        aux_num = 0;
+
         for(int i=0; i<RECORDS; i++) {
 
             // Progress bar
-            progress = ((i+1)/(float)RECORDS)*100;
+            aux_num++;
+            progress = (aux_num/(float)RECORDS)*100;
+            printf("PROGRESS: %2.2f%%", progress);
             if(progress < 100) printf("\r");
-            printf("\rPROGRESS: %2.2f%%", progress);
 
             // Command to move image
             sprintf(command, "mv ./dataset/%s ./dataset/%s/%d", dataset[i].nome, folders[dataset[i].split], dataset[i].class == MALE ? MALE : FEMALE);
             // Execute command
             system(command);
         }
-        printf("\n");
+        printf("\nImages moved!\n");
     }
 
-    printf("Do you need to create the feature file for each split? (y/n) ");
+    printf("\nDo you need to create the feature file for each split? (y/n) ");
     scanf(" %c", &aux_char);
 
+    if(aux_char == 'y') {
+        // Create features file
+        printf("\nCreating features file...\n");
+        aux_num = 0;
 
-    // Create features file
-    printf("\nCreating features file...\n");
+        //one file for each split
+        for(int i=0; i<NUM_SPLITS; i++) {
 
-    //one file for each split
-    for(int i=0; i<NUM_SPLITS; i++) {
+            // file data path
+            sprintf(command, "./dataset/%s_features.txt", folders[i]);
+            features_file = fopen(command, "w");
+            if (features_file == NULL) printf("Error opening file");
 
-        // file data path
-        sprintf(command, "./dataset/%s_features.txt", folders[i]);
-        features_file = fopen(command, "w");
-        if (features_file == NULL) printf("Error opening file");
-
-        // for every class
-        for(int k=0; k<NUM_CLASSES; k++) {
-            // check every record
-            for(int j=0; j<RECORDS; j++) {
-                // if the record is in the split and has the class
-                if(dataset[j].split == i && dataset[j].class == k) {
-                    // write the all his features in a live of the file
-                    for(int z=0; z<NUM_FEATURES; z++) {
-                        fprintf(features_file, "%d ", dataset[j].features[z]);
+            // for every class
+            for(int k=0; k<NUM_CLASSES; k++) {
+                // check every record
+                for(int j=0; j<RECORDS; j++) {
+                    // if the record is in the split and has the class
+                    if(dataset[j].split == i && dataset[j].class == k) {
+                        // write the all his features in a live of the file
+                        for(int z=0; z<NUM_FEATURES; z++) {
+                            fprintf(features_file, "%d ", dataset[j].features[z]);
+                        }
+                        // after that, break the line
+                        fprintf(features_file, "\n");
                     }
-                    // after that, break the line
-                    fprintf(features_file, "\n");
+                    // Progress bar
+                    aux_num++;
+                    progress = (aux_num/(float)(NUM_SPLITS*NUM_CLASSES*RECORDS))*100;
+                    printf("PROGRESS: %2.2f%%", progress);
+                    if(progress < 100) printf("\r");
                 }
             }
-        }
 
-        // close file
-        fclose(features_file);
+            // close file
+            fclose(features_file);
+
+            printf("\nFile %s created!\n", command);
+        }
     }
 
     return 0;
