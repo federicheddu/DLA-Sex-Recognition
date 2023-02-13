@@ -130,6 +130,25 @@ Il modus operandi è il seguente:
 
 ### **Risultati**
 
+```
+init f 1.628e+05 |g| 1.985e+07
+iter  1 f 6.720e+04 |g| 3.317e+06 CG   3 step_size 1.00e+00 
+iter  2 f 4.669e+04 |g| 1.320e+06 CG   8 step_size 1.00e+00 
+iter  3 f 3.950e+04 |g| 5.743e+05 CG   9 step_size 1.00e+00 
+iter  4 f 3.420e+04 |g| 5.140e+05 CG  17 step_size 1.00e+00 
+iter  5 f 3.365e+04 |g| 3.133e+05 CG   9 step_size 1.00e+00 
+iter  6 f 3.322e+04 |g| 5.421e+05 CG   9 step_size 1.00e+00 
+iter  7 f 3.284e+04 |g| 2.521e+05 CG   9 step_size 1.00e+00 
+iter  8 f 3.065e+04 |g| 1.420e+05 CG  16 step_size 1.00e+00 
+iter  9 f 3.052e+04 |g| 2.343e+05 CG   9 step_size 1.00e+00 
+iter 10 f 3.043e+04 |g| 4.875e+04 CG   9 step_size 1.00e+00 
+
+Accuracy = 93.3874% (18642/19962)
+
+
+``` 
+
+
 <br><br>
 
 ---
