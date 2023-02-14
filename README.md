@@ -166,5 +166,16 @@ Accuracy = 93.3874% (18642/19962)
 <br>
 
 <a name="nuova-rete"></a>
+``` 
 
 ## **Creazione di una rete da zero**
+
+
+
+Il network che abbiamo creato ha la seguente struttura: 
+
+![](img/new_network_map.png)
+
+Rappresenta cinque volte una ripetizione degli strati:
+![](img/Layers_cycle.png)
+concludendo infine con gli strati fully connected, di dropout, softmax e infine di classificazione e output.
