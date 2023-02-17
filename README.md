@@ -211,6 +211,10 @@ Il network che abbiamo creato ha la seguente struttura:
 
 ![](img/new_network_map.png)
 
-Rappresenta cinque volte una ripetizione degli strati:
+Rappresenta cinque volte una ripetizione degli strati:<br>
 ![](img/Layers_cycle.png)
 concludendo infine con gli strati fully connected, di dropout, softmax e infine di classificazione e output.
+Sfortunatamente la struttura era troppo complessa quindi la struttura è stata ridotta nella seguente:<br>
+![](img/map2.png)
+Rimuovendo uno delle cinque ripetizioni evidenziate prima, abbassando il numero di fitri negli strati convoluzionari, togliendo uno dei fullyconnected layers e
+abbassandone anche il numero di output.<br><br>
