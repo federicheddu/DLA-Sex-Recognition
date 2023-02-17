@@ -90,6 +90,25 @@ VGG16 prende in input immagini RGB di dimensione 224x224.
 
 La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
+<br><br>
+Tutte le rete presentate precedentemente sono state applicate grazie al seguente codice: 
+```
+if network == "alexnet"
+    net = alexnet;
+    layer = 'fc7';
+elseif network == "resnet"
+    net = resnet18;
+    layer = 'pool5'
+else
+    net = vgg16;
+    layer = 'fc7';
+end
+```
+Il quale a seconda della variabile "network" selezionata dall'utente all'inizio del file direttamente da codice può selezionare il network che più preferisce.
+```
+featuresTrain = activations(net,augimdsTrain,layer,'OutputAs','rows');
+```
+Nel codice di sopra si vede come i parametri di scelta del network vengono poi applicati; ovvero durante l'estrazione della features.
 <br>
 
 <a name="svm"></a>
