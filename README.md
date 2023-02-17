@@ -103,7 +103,23 @@ Questo obiettivo viene raggiunto utilizzando una parte minima del set di dati di
 La figura mostra qual è la linea di demarcazione che massimizza il margine tra  due classi di dati. La stella visibile e i due triangoli  sono i vettori di supporto, che sono gli unici esempi nel set di dati che si trovano sul bordo. Una volta trovati, tutti gli altri esempi nel dataset sono irrilevanti per la classificazione, in quanto definiscono la linea di demarcazione e il margine. 
 I vettori di supporto rappresentano i valori di una classe più vicini alla linea di demarcazione e i valori più vicini all'altra classe. Fondamentalmente, questi sono i valori più difficili da essere classificati.
 Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice: maggiore è il margine, maggiore è la distanza tra le classi, e quindi il potenziale di  confusione.
-
+<br>
+Per fara la classificazione abbiamo usato "liblinear"
+```
+YTrain = double(YTrain(:,1));
+YTest = double(YTest(:,1));
+```
+Prima trasfomando le etichette da categoriche a variabili double in modo tale da poter essere usate più avanti
+```
+featuresTrain = sparse(double(featuresTrain));
+featuresTest = sparse(double(featuresTest));
+```
+Successivamente abbiamo reso la matrice contente le features sparsa in modo da renderla più leggera e il processo di addestramento più snello.
+```
+model = train(YTrain, featuresTrain, options, '-s 2');
+YPred = predict(YTest, featuresTest, model);
+```
+Infine eseguito l'addestramento (passando tutte i paramentri e variabili necessari) e la predizione sul Test set per poter valutare il modello.
 <br><br>
 
 ---
