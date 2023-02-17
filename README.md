@@ -201,7 +201,7 @@ Accuracy = 93.3874% (18642/19962)
 <br>
 
 <a name="nuova-rete"></a>
-``` 
+
 
 ## **Creazione di una rete da zero**
 
