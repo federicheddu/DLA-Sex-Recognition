@@ -223,7 +223,7 @@ abbassandone anche il numero di output.<br><br>
 
 ## **Utilizzo della feature del dataset**
 <br>
-In origine nel dataset assieme alle classi erano presenti anche svariate altre features poste come booleane a simboleggiare se sono presenti o no, (per esempio borse sotto gli occhi, doppio mento, labbra carnose, occhiali etc.). Da principio non ci era richiesto di utilizzarle direttamente, ma abbiamo deciso di fare un quarto file "feat_concat_network" per poterne farne uso. Per realizzarla siamo parti dal file che utilizzava le reti pretrainate e aggiungerle alle feature estratte nella sezione del codice SVM.<br>
+In origine nel dataset assieme alle classi erano presenti anche svariate altre features poste come booleane a simboleggiare se sono presenti o no, (per esempio borse sotto gli occhi, doppio mento, labbra carnose, occhiali etc.). Da principio non ci era richiesto di utilizzarle direttamente, ma abbiamo deciso di fare un quarto file "feat_concat_network" per poterne farne uso. Per realizzarla siamo parti dal file che utilizzava le reti pretrainate e aggiungerle alle feature estratte nella sezione del codice SVM.
 ```
 featuresTrain = [featuresTrain, featTrainMatrix];
 featuresTest = [featuresTest, featTestMatrix];
