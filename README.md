@@ -224,11 +224,14 @@ abbassandone anche il numero di output.<br><br>
 ## **Utilizzo della feature del dataset**
 <br>
 In origine nel dataset assieme alle classi erano presenti anche svariate altre features poste come booleane a simboleggiare se sono presenti o no, (per esempio borse sotto gli occhi, doppio mento, labbra carnose, occhiali etc.). Da principio non ci era richiesto di utilizzarle direttamente, ma abbiamo deciso di fare un quarto file "feat_concat_network" per poterne farne uso. Per realizzarla siamo parti dal file che utilizzava le reti pretrainate e aggiungerle alle feature estratte nella sezione del codice SVM.
+
 ```
 featuresTrain = [featuresTrain, featTrainMatrix];
 featuresTest = [featuresTest, featTestMatrix];
 ```
+
 In questa sezione concateniamo le features estratte dalle funzione activations() e quelle lette dal file con tutte le features.
+
 ```
 featuresTrain = sparse(double(featuresTrain));
 featuresTest = sparse(double(featuresTest));
@@ -236,9 +239,12 @@ featuresTest = sparse(double(featuresTest));
 model = train(YTrain, featuresTrain, '-s 2');
 YPred = predict(YTest, featuresTest, model);
 ```
+
 Questa sezione è invece come il file d'origine, il probelma sorge alla conversione della matrice delle feature in una matrice sparsa di tipo double, in quanto diventando più pesante ha saturato la memoria di uno dei pc che stavamo utilizzando (16 gb), e abbiamo dovuto fare ricorso ad un server per poter concludere i calcoli.
+
 ```
 featTrainMatrix = normalize(featTrainMatrix, 'range') * 2 - 1;
 featTestMatrix = normalize(featTestMatrix, 'range') * 2 - 1;
 ```
+
 È stato anche provato a normalizzare le features dato che quelle estratte dal modello oscillavano tra -25 e 25 mentre quelle del dataset tra -1 e 1; quindi con il codice di sopra si mettono anche le features estratte dal modello nello stesso intorno delle altre; questa modifica però non ha portato dei miglioramenti, anzi ha abbassato l'accuratezza di un 0,1%, quindi questa modifica è stata scartata.
