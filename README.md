@@ -182,8 +182,18 @@ iter 10 f 3.043e+04 |g| 4.875e+04 CG   9 step_size 1.00e+00
 
 Accuracy = 93.3874% (18642/19962)
 ```
+```
+Resnet
+init f 1.628e+005 |g| 1.453e+006
+iter  1 f 5.028e+004 |g| 2.083e+005 CG   3 step_size 1.00e+000 
+iter  2 f 4.099e+004 |g| 7.206e+004 CG   5 step_size 1.00e+000 
+iter  3 f 3.673e+004 |g| 2.755e+004 CG   9 step_size 1.00e+000 
+iter  4 f 3.538e+004 |g| 1.181e+004 CG   9 step_size 1.00e+000 
+iter  5 f 3.500e+004 |g| 8.823e+003 CG   9 step_size 1.00e+000 
+iter  6 f 3.484e+004 |g| 5.836e+003 CG   9 step_size 1.00e+000 
 
-
+Accuracy: 92.68% - Time Elapsed: 184.1821 s - True Positive vs Total: 18500/19962
+```
 <br><br>
 
 ---
