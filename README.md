@@ -203,7 +203,21 @@ Accuracy: 92.68% - Time Elapsed: 184.1821 s - True Positive vs Total: 18500/1996
 <a name="fine-tuning"></a>
 
 ## **Fine Tuning**
-
+Come rete di partenza abbiamo utilizzato Alexnet:
+```matlab
+net = alexnet;
+```
+Ma ne abbiamo dovuto modificare gli ultimi tre strati, poiché sono configurati per 1000 classi, quindi li modifichiamo poiché si possano adattare meglio al nostro specifico problema
+```matlab
+freezedLayers = net.Layers(1:end-3);
+layers = [
+    freezedLayers
+    fullyConnectedLayer(numClasses, ...
+        'WeightLearnRateFactor',20, ...
+        'BiasLearnRateFactor',20)
+    softmaxLayer
+    classificationLayer];
+```
 <br><br>
 
 ---
