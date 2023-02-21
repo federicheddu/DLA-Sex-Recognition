@@ -73,7 +73,7 @@ La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono lay
 
 <br><br>
 Tutte le rete presentate precedentemente sono state applicate grazie al seguente codice: 
-```
+```matlab
 if network == "alexnet"
     net = alexnet;
     layer = 'fc7';
@@ -86,7 +86,7 @@ else
 end
 ```
 Il quale a seconda della variabile "network" selezionata dall'utente all'inizio del file direttamente da codice può selezionare il network che più preferisce.
-```
+```matlab
 featuresTrain = activations(net,augimdsTrain,layer,'OutputAs','rows');
 ```
 Nel codice di sopra si vede come i parametri di scelta del network vengono poi applicati; ovvero durante l'estrazione della features.
@@ -105,17 +105,17 @@ I vettori di supporto rappresentano i valori di una classe più vicini alla line
 Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice: maggiore è il margine, maggiore è la distanza tra le classi, e quindi il potenziale di  confusione.
 <br><br>
 Per fara la classificazione abbiamo usato la libreria "liblinear", e applicata tramite il seguente codice: 
-```
+```matlab
 YTrain = double(YTrain(:,1));
 YTest = double(YTest(:,1));
 ```
 Prima trasfomando le etichette da categoriche a variabili double in modo tale da poter essere usate più avanti.
-```
+```matlab
 featuresTrain = sparse(double(featuresTrain));
 featuresTest = sparse(double(featuresTest));
 ```
 Successivamente abbiamo reso la matrice contente le features sparsa in modo da renderla più leggera e il processo di addestramento più snello.
-```
+```matlab
 model = train(YTrain, featuresTrain, options, '-s 2');
 YPred = predict(YTest, featuresTest, model);
 ```
@@ -184,7 +184,21 @@ Accuracy: 92.68% - Time Elapsed: 184.1821 s - True Positive vs Total: 18500/1996
 <a name="fine-tuning"></a>
 
 ## **Fine Tuning**
-
+Come rete di partenza abbiamo utilizzato Alexnet:
+```matlab
+net = alexnet;
+```
+Ma ne abbiamo dovuto modificare gli ultimi tre strati, poiché sono configurati per 1000 classi, quindi li modifichiamo poiché si possano adattare meglio al nostro specifico problema
+```matlab
+freezedLayers = net.Layers(1:end-3);
+layers = [
+    freezedLayers
+    fullyConnectedLayer(numClasses, ...
+        'WeightLearnRateFactor',20, ...
+        'BiasLearnRateFactor',20)
+    softmaxLayer
+    classificationLayer];
+```
 <br><br>
 
 ---
@@ -216,14 +230,14 @@ abbassandone anche il numero di output.<br><br>
 <br>
 In origine nel dataset assieme alle classi erano presenti anche svariate altre features poste come booleane a simboleggiare se sono presenti o no, (per esempio borse sotto gli occhi, doppio mento, labbra carnose, occhiali etc.). Da principio non ci era richiesto di utilizzarle direttamente, ma abbiamo deciso di fare un quarto file "feat_concat_network" per poterne farne uso. Per realizzarla siamo parti dal file che utilizzava le reti pretrainate e aggiungerle alle feature estratte nella sezione del codice SVM.
 
-```
+```matlab
 featuresTrain = [featuresTrain, featTrainMatrix];
 featuresTest = [featuresTest, featTestMatrix];
 ```
 
 In questa sezione concateniamo le features estratte dalle funzione activations() e quelle lette dal file con tutte le features.
 
-```
+```matlab
 featuresTrain = sparse(double(featuresTrain));
 featuresTest = sparse(double(featuresTest));
 
@@ -233,7 +247,7 @@ YPred = predict(YTest, featuresTest, model);
 
 Questa sezione è invece come il file d'origine, il probelma sorge alla conversione della matrice delle feature in una matrice sparsa di tipo double, in quanto diventando più pesante ha saturato la memoria di uno dei pc che stavamo utilizzando (16 gb), e abbiamo dovuto fare ricorso ad un server per poter concludere i calcoli.
 
-```
+```matlab
 featTrainMatrix = normalize(featTrainMatrix, 'range') * 2 - 1;
 featTestMatrix = normalize(featTestMatrix, 'range') * 2 - 1;
 ```
