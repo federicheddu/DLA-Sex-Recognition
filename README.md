@@ -32,7 +32,7 @@ Sonos stati effettuati tre diversi esperimenti, ognuno con un approccio diverso:
 >    - [Fine Tuning](#ft-finetuning)
 >    - [Risultati](#ft-risultati)
 > 1. [Creazione di una rete da zero](#nuova-rete)
->
+> 
 
 <br><br>
 
@@ -49,15 +49,7 @@ Sonos stati effettuati tre diversi esperimenti, ognuno con un approccio diverso:
 <a name="alexnet"></a>
 
 ### **AlexNet**
-AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
-AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
-![](img/alexnet_structure.png)
-
-Nel primo strato si riceve l'immagine come input e la si ridimensiona per adattarsi alla rete neurale, successivamente i cinque strati convolutivi itilizzano filtri per estrarre le caratteristiche visive dall'immagine.  
-Ogni strato convolutivo utilizza un insieme di filtri che scorrono sull'immagine eseguendo una combinazione lineare dei valori dei pixel e producendo una nuova immaigne chiamata "*feature map*".  
-Gli strati fully connected sono due e hanno la funzione di classificare l'immagine in base alle caratteristiche estratte dai layer convolutivi.  
-Il layer di output è un layer softmax che restituisce la probabilità che l'immagine appartenga ad una delle 2 classi.
 
 <br>
 
@@ -65,18 +57,7 @@ Il layer di output è un layer softmax che restituisce la probabilità che l'imm
 
 ### **ResNet**
 
-ResNet è una rete neurale convolutiva presentata nel 2015 da Microsoft Research Asia. Con i suoi 152 livelli, la versione completa di ResNet è un’architettura piuttosto complessa, quindi abbiamo optato per utilizzare la versione ResNet18.  
-Per allenare un così alto numero di livelli utilizza un metodo detto "skip connection". Il quale prende i dati trasferiti al livello successivo e lo aggiungono anche al output di quelli precedenti come mostrato nella figura sottostante:
 
-![](img/resnet_structure.png)
-
-ResNet è organizzata in **blocchi residuali** *(residual block)*. 
-
-Durante la **back propagation** e il **calcolo del metodo di ottimizzazione** (es. gradiente stocastico discendente) se il numero di livelli è troppo grande, il gradiente può diventare:
-- molto grande (**exploding gradient**): causa problemi d’instabilità e genera parametri (weights) che superano quelli gestibili dal computer
-- estremamente piccolo (**vanishing gradient**): determina un aggiornamento minimo dei pesi e causa un rallentamento del processo di training.
-
-Grazie alla sua struttura, ResNet invece di aspettare che il gradiente si propaghi indietro (back propagation) un livello alla volta, il percorso di skip connection gli consente di raggiungere i nodi iniziali efficacemente saltando quelli intermedi.
 
 <br>
 
