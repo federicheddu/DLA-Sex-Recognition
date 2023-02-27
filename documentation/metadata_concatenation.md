@@ -97,6 +97,7 @@ featuresTest1 = normalize(featuresTest1, 'center', C, 'scale', S);
 <br>
 
 ## **Risultati - senza normalizzazione**
+Dai risultati possiamo norare come la combinazione dei metadati abbia portato ad un aumento sostanziale dell'accuracy per tutte le reti neurali utilizzate del 3% circa per ogni rete, passando da un aumento del 3.71% per ResNet-18 ad un aumento del 2.15% di ResNet-50, quest'ultima che raggiunge però un accuracy del 96.91% che è il massimo raggiunto da tutte le reti neurali utilizzate.
 
 |          | AlexNet *(1GPU)*  | ResNet-18 *(2GPU)* | ResNet-50 *(1GPU)*  | VGG16 *(1GPU)* |
 | -------  | --------------- | ---------------- | ----------------- | ------------ |
@@ -104,11 +105,15 @@ featuresTest1 = normalize(featuresTest1, 'center', C, 'scale', S);
 | Rateo    | 19236/19962     | 19234/19962      | 19346/19962       | 19265/19962  |
 | Time     | 369.4852s       | 177.8919s        | 283.0541s         | 552.8084s    |
 
+Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vedere la matrice di confusione e qualche esempio di classificazione.
+
+<br>
+
 <table>
 
 <tr><td>
 
-AlexNet confusion
+**AlexNet conf w/o norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.9% <br> (11862)   |  4.4% <br> (341)      |
@@ -116,7 +121,7 @@ AlexNet confusion
 
 </td><td>
 
-Resnet-18 confusion 
+**Resnet-18 conf w/o norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.8% <br> (11860)   |  4.4% <br> (341)      |
@@ -125,7 +130,7 @@ Resnet-18 confusion
 </td></tr>
 <tr><td>
 
-Resnet-50 confusion 
+**Resnet-50 conf w/o norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  97.3% <br> (11920)   |  3.7% <br> (289)      |
@@ -133,7 +138,7 @@ Resnet-50 confusion
 
 </td><td>
 
-VGG16 confusion 
+**VGG16 conf w/o norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.9% <br> (11868)   |  4.1% <br> (318)      |
@@ -146,6 +151,8 @@ VGG16 confusion
 <br>
 
 ## **Risultati - con normalizzazione**
+Dai risultati di quest'ultimo esperimento possiamo notare come la normalizzazione delle feature non abbia portato grande beneficio rispetto alla semplice concatenazione dei metadati.  
+L'accuracy massima rimane quella di ResNet-50 che raggiunge il 96.97% mentre la rete che ha avuto il miglioramento più significativo è stata VGG16 che ha raggiunto un accuracy del 96.64%.
 
 |          | AlexNet *(1GPU)*  | ResNet-18 *(2GPU)* | ResNet-50 *(1GPU)*  | VGG16 *(1GPU)* |
 | -------  | --------------- | ---------------- | ----------------- | ------------ |
@@ -155,11 +162,13 @@ VGG16 confusion
 
 Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vedere la matrice di confusione:
 
+<br>
+
 <table>
 
 <tr><td>
 
-**AlexNet confusion**
+**AlexNet conf w/ norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.8% <br> (11861)   |  4.4% <br> (338)      |
@@ -167,7 +176,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 
 </td><td>
 
-**Resnet-18 confusion**
+**Resnet-18 conf w/ norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.8% <br> (11850)   |  4.3% <br> (332)      |
@@ -176,7 +185,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 </td></tr>
 <tr><td>
 
-**Resnet-50 confusion**
+**Resnet-50 conf w/ norm**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  97.3% <br> (11921)   |  3.6% <br> (278)      |
@@ -184,7 +193,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 
 </td><td>
 
-**VGG16 confusion**
+**VGG16 conf w/ norm**
 |               |  **T Female**         |  **T Male**           |
 | ---           |  ---                  | ---                   |
 | **P Female**  | 97.1% <br> (11888)    |  4.0% <br> (311)      |
@@ -193,3 +202,31 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 </td></tr>
 
 </table>
+
+<br>
+
+## **Conclusioni**
+Per trarre le conclusioni finali riassumiamo i risultati ottenuti per ogni rete confrontando gli esperimenti con e senza metadati e/o normalizzazione:
+
+|              | **AlexNet FE** | **AlexNet FE w/ metadata** | **AlexNet w/ metadata & norm** |
+| -----------  | -------------- | -------------------------- | ------------------------------ |
+| **Accuracy** | 93.29%         | 96.36%                     | 96.37%                         |
+| **Delta**    | /              | +3.07%                     | +3.08%                         |
+
+|              | **ResNet-18 FE** | **ResNet-18 FE w/ metadata** | **ResNet-18 w/ metadata & norm** |
+| -----------  | ---------------- | ---------------------------- | -------------------------------- |
+| **Accuracy** | 92.71%           | 96.35%                       | 96.35%                           |
+| **Delta**    | /                | +3.64%                       | +3.64%                           |
+
+|              | **ResNet-50 FE** | **ResNet-50 FE w/ metadata** | **ResNet-50 w/ metadata & norm** |
+| -----------  | ---------------- | ---------------------------- | -------------------------------- |
+| **Accuracy** | 94.76%           | 96.91%                       | 96.97%                           |
+| **Delta**    | /                | +2.15%                       | +2.21%                           |
+
+|              | **VGG16 FE** | **VGG16 FE w/ metadata** | **VGG16 w/ metadata & norm** |
+| -----------  | ------------ | ------------------------ | ---------------------------- |
+| **Accuracy** | 93.37%       | 96.51%                   | 96.64%                       |
+| **Delta**    | /            | +3.14%                   | +3.27%                       |
+
+La concatenazione dei metadati ha portato un miglioramento dell'accuracy per tutte le reti, con un aumento medio di circa il 3%, il che è un ottimo risultato, inoltre la normalizzazione delle feature non ha portato grandi miglioramenti aggiuntivi.  
+Considerando che la concatenazione dei metadati non è un operazione pesante e che la normalizzazione delle feature anchessa non è un operazione esigente, possiamo concludere che la concatenazione dei metadati è un'operazione che può essere utilizzata per migliorare le prestazioni gratis (dove questi dati sono presenti) di una rete neurale e che la normalizzazione, sebbene non sia indispensabile, può portare un ulteriore miglioramento dell'accuracy con un limitato costo computazionale.
