@@ -1,6 +1,8 @@
 ## Combinazione metadati e feature
 Dato che il dataset CelebA a nostra disposizione, oltre che le immagini, metteva a disposizione una serie di metadati per ogni immagine, abbiamo deciso di provare a combinare queste informazioni con le feature estratte dalle reti neurali utilizzate nell'esperimento di feature extraction.
 
+In questa sezione andremo a descrivere le integrazioni fatte all'[esperimento di feature extraction](../alex_res_vgg.mlx), per informazioni sul resto del codice rifarsi a quella sezione.
+
 Questi metadati consistono in feature binarie ad alto livello quali:
 - 5_o_Clock_Shadow
 - Arched_Eyebrows
@@ -44,12 +46,10 @@ Questi metadati consistono in feature binarie ad alto livello quali:
 
 Oltre a queste 39 feature ad alto livello in questo file era presente anche la feature *Male* che indica se l'immagine rappresenta un uomo o una donna e che è stata utilizzata come label in tutti gli esperimenti.
 
-In questa sezione andremo a descrivere le aggiunte fatte all'esperimento di feature extraction per includere queste informazioni.
-
 <br>
 
 ## **Attivare la combinazione dei metadati**
-La combinazione dei metadati è stata implementata come opzione nel file [`alex_res_vgg.mlx`](../alex_res_vgg.mlx) e può essere attivata settando le variabilie `concatenationMetadata` a 1.  
+La combinazione dei metadati è stata implementata come opzionale nel file [`alex_res_vgg.mlx`](../alex_res_vgg.mlx) e può essere attivata settando le variabilie `concatenationMetadata` a 1.  
 È inoltre presente il flag `normalizationMetadata` che se impostato ad 1 effettua la normalizzazione delle feature dopo la concatenazione.
 
 ```MATLAB
