@@ -104,11 +104,17 @@ featuresTest1 = normalize(featuresTest1, 'center', C, 'scale', S);
 | Rateo    | 19236/19962     | 19234/19962      | 19346/19962       | 19265/19962  |
 | Time     | 369.4852s       | 177.8919s        | 283.0541s         | 552.8084s    |
 
+<table>
+
+<tr><td>
+
 AlexNet confusion
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.9% <br> (11862)   |  4.4% <br> (341)      |
 | **P Male**    |  3.1% <br> (385)      |  95.6% <br> (7374)    |
+
+</td><td>
 
 Resnet-18 confusion 
 |               | **T Female**          |  **T Male**           |
@@ -116,17 +122,26 @@ Resnet-18 confusion
 | **P Female**  |  96.8% <br> (11860)   |  4.4% <br> (341)      |
 | **P Male**    |  3.2% <br> (387)      |  95.6% <br> (7374)    |
 
+</td></tr>
+<tr><td>
+
 Resnet-50 confusion 
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  97.3% <br> (11920)   |  3.7% <br> (289)      |
 | **P Male**    |  2.7% <br> (327)      |  96.3% <br> (7426)    |
 
+</td><td>
+
 VGG16 confusion 
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.9% <br> (11868)   |  4.1% <br> (318)      |
 | **P Male**    |  3.1% <br> (379)      |  95.9% <br> (7397)    |
+
+</td></tr>
+
+</table>
 
 <br>
 
