@@ -144,8 +144,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 
 <tr><td>
 
-<tr><th> **AlexNet** </th><th> **Resnet-18** </th></tr>
-
+**AlexNet confusion**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.8% <br> (11861)   |  4.4% <br> (338)      |
@@ -153,6 +152,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 
 </td><td>
 
+**Resnet-18 confusion**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  96.8% <br> (11850)   |  4.3% <br> (332)      |
@@ -161,8 +161,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 </td></tr>
 <tr><td>
 
-<tr><th> **Resnet-50** </th><th> **VGG16** </th></tr>
-
+**Resnet-50 confusion**
 |               | **T Female**          |  **T Male**           |
 | ---           | ---                   | ---                   |
 | **P Female**  |  97.3% <br> (11921)   |  3.6% <br> (278)      |
@@ -170,6 +169,7 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 
 </td><td>
 
+**VGG16 confusion**
 |               |  **T Female**         |  **T Male**           |
 | ---           |  ---                  | ---                   |
 | **P Female**  | 97.1% <br> (11888)    |  4.0% <br> (311)      |
