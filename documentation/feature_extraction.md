@@ -104,14 +104,15 @@ model = train(Train, featuresTrain, options, '-s 2');
 YPred = predict(YTest, featuresTest, model);
 ```
 Di seguito verranno spiegate le opzioni dell'addestramento:
-*L'opzione `sgdm` indica l'ottimizzatore scelto, ovvero la discesa stocastica del gradiente
-*'LearnRateSchedule' indica che il tasso di apprendimento del modello verrà modificato in base ad uno schema predefinito.
-*'LearnRateDropFactor' indica la frazione di riduzione del tasso di apprendimento. In questo caso, il tasso di apprendimento verrà ridotto del 20% quando viene raggiunto il periodo di riduzione del tasso di apprendimento, poiché come paramentro è impostato 0,2.
-*'LearnRateDropPeriod' indica dopo quanti epoch il tasso di apprendimento deve essere ridotto.
-*'MaxEpochs' indica il numero massimo di epoche per cui il modello viene addestrato.
-*'MiniBatchsize' indica la dimensione del batch di dati utilizzati per ogni iterazione durante il training.
-*'Plots', 'training-progress' è stato indicato che il plot deve mostrare la progressione del training ed essere visualizzato.
-*'ExecutionEnvironment', 'multi-gpu' indica che il training verrà eseguito su più di una GPU, abbiamo usato questa oppzione poiché va bene sia per le multi-gpu nel caso siano disponibili che per le singole in quanto la singola viene considerata come un array con un singolo elemento.
+
+- L'opzione `'sgdm'` indica l'ottimizzatore scelto, ovvero la discesa stocastica del gradiente
+- `'LearnRateSchedule'` indica che il tasso di apprendimento del modello verrà modificato in base ad uno schema predefinito.
+- `'LearnRateDropFactor'` indica la frazione di riduzione del tasso di apprendimento. In questo caso, il tasso di apprendimento verrà ridotto del 20% quando viene raggiunto il periodo di riduzione del tasso di apprendimento, poiché come paramentro è impostato 0,2.
+- `'LearnRateDropPeriod'` indica dopo quanti epoch il tasso di apprendimento deve essere ridotto.
+- `'MaxEpochs'` indica il numero massimo di epoche per cui il modello viene addestrato.
+- `'MiniBatchsize'` indica la dimensione del batch di dati utilizzati per ogni iterazione durante il training.
+- `'Plots', 'training-progress'` è stato indicato che il plot deve mostrare la progressione del training ed essere visualizzato.
+- `'ExecutionEnvironment', 'multi-gpu'` indica che il training verrà eseguito su più di una GPU, abbiamo usato questa oppzione poiché va bene sia per le multi-gpu nel caso siano disponibili che per le singole in quanto la singola viene considerata come un array con un singolo elemento.
 
 
 <br>
