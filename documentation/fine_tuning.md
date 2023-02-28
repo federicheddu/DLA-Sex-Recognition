@@ -40,8 +40,8 @@ augimdsTest = augmentedImageDatastore (inputSize(1:2), imdsTest);
 ```
 
 ## **Fine-tuning**
-Per effettuare il fine-tuning è sono stati bloccati tutti i layer della rete tranne gli ultimi tre, quindi ne sono stati aggiunti altrettanti e sono stati riaddestrati.  
-I layer aggiunti sono un fully connected layer con 2 neuroni, una funzione di softmax layer e un layer di classificazione.
+Per effettuare il fine-tuning sono salvati tutti i layer della rete tranne gli ultimi tre, quindi ne sono stati aggiunti altrettanti e viene poi riaddestrata la rete risultante.  
+I layer aggiunti sono un fully connected layer con 2 neuroni (numero pari a quello delle classi), una funzione di softmax layer per normalizzare l'output della rete neurale e produrre le probabilità delle diverse classi, infine un layer di classificazione che assegna una classe agli input sulla base delle probabilità calcolate dallo strato softmax.
 
 ```MATLAB
 freezedLayers = net. Layers (1:end-3);
