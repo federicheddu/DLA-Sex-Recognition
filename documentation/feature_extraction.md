@@ -24,7 +24,8 @@ Per l'esecuzione di questi esperimenti vengono caricati train e test set. I dati
 
 Una volta caricato il dataset si può decidere con la variabile `printTrainingSet` se visualizzare o meno alcune immagini del training set.
 
-> AGGIUNGERE IMG
+
+![](../img/Stampa_Train.png)
 
 <br>
 
