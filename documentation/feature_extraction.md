@@ -78,7 +78,7 @@ YTest = imdsTest.Labels;
 <br>
 
 ## Classificazione con SVM
-Dopo l'estrazione delle features viene utilizzato un classificatore SVM per classificare le immagini in base al sesso. Per mandare i dati in pasto al classificatore è stato necessario fare una conversione delle labels e delle features a `double`.
+Dopo l'estrazione delle features viene utilizzato un classificatore SVM per classificare le immagini in base al sesso. Per mandare i dati in pasto al classificatore è stato necessario fare una conversione delle labels e delle features a `double`, e la matrice delle features è stata anche modificata per diventare una matrice sparsa per cercare di rispiarmiare un po' di spazio.
 
 ```MATLAB
 Train = double (YTrain(:, 1));
@@ -87,7 +87,7 @@ featuresTrain = sparse (double (featuresTrain1));
 featuresTest = sparse (double(featuresTest1));
 ```
 
- Dopodiché si è potuto procedere con l'addestramento del classificatore e alla predizione delle labels sul test set.
+ E dopo aver impostato le opzioni dell'addestramento si è potuto procedere con l'addestramento del classificatore e alla predizione delle labels sul test set.
 
 ```MATLAB
 options = trainingOptions ('sgdm',
@@ -103,6 +103,16 @@ model = train(Train, featuresTrain, options, '-s 2');
 
 YPred = predict(YTest, featuresTest, model);
 ```
+Di seguito verranno spiegate le opzioni dell'addestramento:
+*L'opzione `sgdm` indica l'ottimizzatore scelto, ovvero la discesa stocastica del gradiente
+*'LearnRateSchedule' indica che il tasso di apprendimento del modello verrà modificato in base ad uno schema predefinito.
+*'LearnRateDropFactor' indica la frazione di riduzione del tasso di apprendimento. In questo caso, il tasso di apprendimento verrà ridotto del 20% quando viene raggiunto il periodo di riduzione del tasso di apprendimento, poiché come paramentro è impostato 0,2.
+*'LearnRateDropPeriod' indica dopo quanti epoch il tasso di apprendimento deve essere ridotto.
+*'MaxEpochs' indica il numero massimo di epoche per cui il modello viene addestrato.
+*'MiniBatchsize' indica la dimensione del batch di dati utilizzati per ogni iterazione durante il training.
+*'Plots', 'training-progress' è stato indicato che il plot deve mostrare la progressione del training ed essere visualizzato.
+*'ExecutionEnvironment', 'multi-gpu' indica che il training verrà eseguito su più di una GPU, abbiamo usato questa oppzione poiché va bene sia per le multi-gpu nel caso siano disponibili che per le singole in quanto la singola viene considerata come un array con un singolo elemento.
+
 
 <br>
 
