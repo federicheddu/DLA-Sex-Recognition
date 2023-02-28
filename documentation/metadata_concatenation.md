@@ -67,7 +67,7 @@ Per l'estrazione è stato scritto lo script in C [`feature.c`](../feature.c) che
 
 I file sono stati organizzati in questo modo in maniera tale da poter caricare singolarmente le feature per ogni ripartizione del dataset e l'ordinamento interno è stato scelto per avere una corrispondeza tra le feature e il caricamento che effettua MATLAB delle immagini.
 
-Questi dati vengono poi caricati in MATLAB:
+Questi dati vengono poi caricati in MATLAB e salvati in una variabile dopo essere stati interpretati come una matrice come mostrato nel codice seguente:
 
 ```MATLAB
 featTrainMatrix = readmatrix ('dataset/TrainSet_features.txt','Delimiter', ' ');
@@ -87,7 +87,9 @@ featuresTest1 = [featuresTest1, featTestMatrix];
 <br>
 
 ## **Normalizzazione delle feature**
-Se il flag `normalizationMetadata` è impostato a 1, le feature vengono normalizzate secondo centro e deviazione standard, utilizzando la funzione `normalize` di MATLAB.
+Se il flag `normalizationMetadata` è impostato a 1, le feature vengono normalizzate secondo centro e deviazione standard, utilizzando la funzione `normalize` di MATLAB; questa funzione viene utilizzata per portare i dati ad avere media 0 e varianza 1 (cioè una distribuzione normale standard), in modo da rendere i dati comparabili e gestibili dal modello di apprendimento. 
+
+Il parametro `C` rappresenta il vettore di media dei dati di `featuresTrain1`, e il parametro `S` rappresenta il vettore di deviazione standard dei dati di `featuresTrain1`. In pratica, i dati di `featuresTrain1` e `featuresTest1` vengono trasformati in modo tale che ogni feature abbia media 0 e varianza 1. Questo viene fatto in modo che tutte le feature abbiano la stessa scala, e il modello di apprendimento automatico possa lavorare in modo più efficiente.
 
 ```MATLAB
 [featuresTrain1, C, S] = normalize(featuresTrain1);
