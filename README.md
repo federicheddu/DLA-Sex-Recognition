@@ -253,3 +253,41 @@ featTestMatrix = normalize(featTestMatrix, 'range') * 2 - 1;
 ```
 
 È stato anche provato a normalizzare le features dato che quelle estratte dal modello oscillavano tra -25 e 25 mentre quelle del dataset tra -1 e 1; quindi con il codice di sopra si mettono anche le features estratte dal modello nello stesso intorno delle altre; questa modifica però non ha portato dei miglioramenti, anzi ha abbassato l'accuratezza di un 0,1%, quindi questa modifica è stata scartata.
+
+
+
+
+# Come eseguire il progetto 
+1. Clonare la repository
+```shell script
+git clone https://github.com/federicheddu/DLA-Sex-Recognition.git
+```
+2. Aprire uno dei file (ogni file corrisponde ad un task specifico):  
+    1. ```alex_res_vgg.mlx```: il file utilizza dei network pre-trainati per fare la feature extraction e la classificazione usando SVM
+    1. ```finetuning.mlx```: il file che esegue il fine tuning
+    1. ```new_network.mlx```: il file con la rete creata da zero METTERE IL FILE CORRETTO
+
+1. Installare su MATLAB il Statistic and Machine Learning Toolbox Add On: Home > Add-On > Statistic and Machine Learning Toolbox
+
+2. Installare su MATLAB il Deep Learning Toolbox Add On: Home > Add-On > Deep Learning Toolbox
+
+3. Installare su MATLAB il Deep Learning Toolbox Model for AlexNet Network Add On: Home > Add-On > Deep Learning Toolbox Model for AlexNet Network
+
+4. Installare su MATLAB il Deep Learning Toolbox Model for ResNet-18 Network Add On: Home > Add-On > Deep Learning Toolbox Model for ResNet-18 Network
+
+5. Installare su MATLAB il Deep Learning Toolbox Model for ResNet-50 Network Add On: Home > Add-On > Deep Learning Toolbox Model for ResNet-50 Network
+
+6. Installare su MATLAB il Deep Learning Toolbox Model for VGG-16 Network Add On: Home > Add-On > Deep Learning Toolbox Model for VGG-16 Network
+
+7. Installare su MATLAB il Plot Confusion Matrix Add On: Home > Add-On > Plot Confusion Matrix by Vane Tshitoyan
+
+8. Installare su MATLAB il Parallel Computing Toolbox Add On: Home > Add-On > Parallel Computing Toolbox (facoltativo se si vuole usatr la GPU ma vivamente consigliato)
+
+##Inserimento del dataset
+scaricare il dataset dal link [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), in particolare la versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ)
+TI LASCIO L'ONORE DI SCRIVERE LE SEZIONI PER LO SCRIPT DEL DATASET E DELLE FEATURES 
+##Settare le variabili dei file
+Ogni file ha delle variabili all'inizio una sezione per poter decidere alcune variazioni all'esecuzione come il network o delle stampe.
+
+##Eseguire lo script
+se si sono eseguiti a dovere i passi precedenti tutti i file dovrebbero essere eseguibili senza problemi (per alcuni è richiesta una più che buona capacità della RAM).
