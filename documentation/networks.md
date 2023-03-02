@@ -8,6 +8,17 @@
 > - [SVM](#svm)
 
 <br>
+## **AlexNet**
+AlexNet è il nome dato a un'architettura di rete neurale convoluzionale che ha vinto il concorso LSVRC nel 2012.
+
+La LSVRC (Large Scale Visual Recognition Challenge) è una competizione in cui i team di ricerca valutano i loro algoritmi su un enorme set di immagini etichettate (da ImageNet) e competono per ottenere una maggiore accuratezza su diversi compiti di riconoscimento visivo.
+
+AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
+
+
+
+Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ultimo, il quele produce un output con una softmax una distribuzione di probabilità sulle sue 1000 etichette di classe disponibili come output (impostazione originaria dell'archittuttura). Il dropout viene applicato nei primi due strati completamente connessi. I neuroni degli strati completamente connessi sono collegati a tutti i neuroni dello strato precedente.
+
 
 ## **AlexNet**
 AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
@@ -61,6 +72,24 @@ Quattro blocchi residui: dopo il primo blocco, ci sono quattro blocchi residui, 
 - Pooling globale: alla fine del quinto blocco, viene applicato un pooling globale sui dati di output della rete. Questo pooling globale riduce la dimensione dei dati in uscita e prepara la rete per il layer di output finale.
 - Layer di output: infine, viene aggiunto un layer di output completamente connesso, costituito da un singolo neurone, che calcola la probabilità che l'immagine in ingresso appartenga a una delle classi di destinazione.
 
+<br>
+
+## **ResNet-50**
+ResNet-50 è una rete neurale convoluzionale profonda utilizzata principalmente per la classificazione delle immagini, che è stata proposta per la prima volta nel 2015 da Kaiming He, Xiangyu Zhang, Shaoqing Ren e Jian Sun in un articolo intitolato "Deep Residual Learning for Image Recognition". La rete è stata progettata per superare il problema della scomparsa del gradiente, che si verifica quando la retropropagazione del gradiente attraverso molteplici strati della rete diventa molto difficile a causa della riduzione del gradiente.
+
+ResNet-50 è costituita da 50 strati di convoluzione, ed è composta da un insieme di blocchi di tipo "residuale", che sono progettati per consentire alla rete di imparare a saltare uno o più strati durante la trasmissione dell'informazione. Questa caratteristica rende la rete più profonda e in grado di apprendere funzioni più complesse rispetto ad altre reti neurali convoluzionali.
+
+![](../img/ResNet50Arc.png)
+
+L'architettura ResNet a 50 strati comprende i seguenti elementi, come mostrato nella tabella sotto:
+
+- Un kernel di covoluzione 7×7 insieme ad altri 64 kernel con uno stride di 2 dimensioni. 
+- Uno strato di max pooling con uno stride di 2 dimensioni. 
+- Altri 9 strati-3×3,64 kernel di convoluzione, un altro con kernel 1×1,64 e un terzo con kernel 1×1,256. Questi 3 strati vengono ripetuti 3 volte. 
+- Altri 12 strati con kernel 1×1,128, kernel 3×3.128 e kernel 1×1.512, iterati 4 volte. Altri 18 strati con core 1×1,256 e 2 core 3×3,256 e 1×1,1024, iterati 6 volte. - Altri 9 strati con core 1×1.512, core 3×3.512 e core 1×1.2048 iterati 3 volte.
+- Average pooling, seguito da uno strato completamente connesso con 1000 nodi, utilizzando la funzione di attivazione softmax.
+
+![](../img/TabResNet50.png)
 <br>
 
 ---
