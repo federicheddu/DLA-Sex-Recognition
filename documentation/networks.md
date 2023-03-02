@@ -89,7 +89,7 @@ L'architettura ResNet a 50 strati comprende i seguenti elementi, come mostrato n
 - Altri 12 strati con kernel 1×1,128, kernel 3×3.128 e kernel 1×1.512, iterati 4 volte. Altri 18 strati con core 1×1,256 e 2 core 3×3,256 e 1×1,1024, iterati 6 volte. - Altri 9 strati con core 1×1.512, core 3×3.512 e core 1×1.2048 iterati 3 volte.
 - Average pooling, seguito da uno strato completamente connesso con 1000 nodi, utilizzando la funzione di attivazione softmax.
 
-![](../img/TabResNet50.png)
+![](../img/TabResnet50.png)
 <br>
 
 ---
