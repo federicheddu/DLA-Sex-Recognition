@@ -128,9 +128,18 @@ VGG16 prende in input immagini RGB di dimensione 224x224.
 
 ![](../img/vgg_structure.png)
 
-La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output. Ogni strato di convoluzione consiste in una serie di filtri di convoluzione che elaborano l'immagine di input per estrarne caratteristiche rilevanti, mentre i layer di pooling riducono la dimensionalità dell'output del layer precedente.
-
 Il modello è stato addestrato sul dataset ImageNet, che contiene oltre 14 milioni di immagini appartenenti a 1.000 classi diverse, utilizzando una tecnica di ottimizzazione chiamata backpropagation. VGG-16 ha raggiunto un'accuratezza del 92,7% sul dataset di validation di ImageNet, rendendola una delle reti neurali convoluzionali più accurate al momento della sua creazione.
 
 Inoltre, VGG-16 ha anche contribuito all'avanzamento delle tecniche di trasferimento dell'apprendimento, dove i pesi pre-addestrati della rete possono essere utilizzati per risolvere altri problemi di classificazione di immagini senza dover addestrare una nuova rete da zero.
 
+La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output. Ogni strato di convoluzione consiste in una serie di filtri di convoluzione che elaborano l'immagine di input per estrarne caratteristiche rilevanti, mentre i layer di pooling riducono la dimensionalità dell'output del layer precedente.
+
+Il numero 16 in VGG16 si riferisce a 16 strati con pesi. Nel VGG16 ci sono tredici strati convoluzionali, cinque strati di Max Pooling e tre strati densi, per un totale di 21 strati, ma ha solo sedici strati pesati.
+- VGG16 prende il tensore di ingresso di 224, 244 con 3 canali RGB.
+- Gli strati di convoluzione e di max pool sono disposti in modo coerente nell'intera architettura.
+- Lo strato Conv-1 ha 64 filtri, Conv-2 ha 128 filtri, Conv-3 ha 256 filtri, Conv 4 e Conv 5 hanno 512 filtri.
+- Tre livelli Fully-Connected (FC) seguono una pila di livelli convoluzionali: i primi due hanno 4096 canali ciascuno, il terzo esegue una classificazione ILSVRC a 1000 vie e contiene quindi 1000 canali (uno per ogni classe). L'ultimo strato è il livello soft-max.
+
+![](../img/vgg16Arc.png)
+
+<br>
