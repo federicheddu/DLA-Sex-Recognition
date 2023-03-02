@@ -99,13 +99,16 @@ L'architettura ResNet a 50 strati comprende i seguenti elementi, come mostrato n
 ## **ResNet-18**
 ResNet-18 è una rete neurale convoluzionale relativamente meno profonda rispetto a ResNet-50.  
 È stata proposta per la prima volta nello stesso articolo che ha introdotto ResNet-50, ovvero "Deep Residual Learning for Image Recognition".
+ResNet18 è un'architettura a 72 strati con 18 strati profondi. L'architettura di questa rete mira a consentire il funzionamento di un gran numero di strati convoluzionali in maniera efficiente.
+
+L'idea principale di ResNet è l'uso di "jumping connections". Queste connessioni funzionano principalmente saltando su uno o più strati, formando scorciatoie tra questi strati. L'obiettivo dell'introduzione di queste connessioni di scorciatoia è quello di risolvere il problema predominante di vanificazione del gradiente che le reti profonde devono affrontare.
 
 ![](../img/resnet18_structure.jpg)
 
 La struttura di ResNet-18:
 
 - Input: immagini RGB di dimensione 224x224x3.
-- Primo blocco: il primo blocco è costituito da un layer di convoluzione seguito da un layer di batch normalization e un'attivazione ReLU. A differenza di ResNet-50, il primo blocco di ResNet-18 contiene solo una convoluzione invece di due.
+- Primo blocco: il primo blocco è costituito da un layer di convoluzione seguito da un layer di batch normalization e un'attivazione ReLU.
 
 Quattro blocchi residui: come per ResNet-50, ci sono quattro blocchi residui in ResNet-18. Tuttavia, ogni blocco residuo in ResNet-18 contiene solo due sotto-blocchi invece di tre o cinque come in ResNet-50.
 - Pooling globale: alla fine dell'ultimo blocco residuo, viene applicato un pooling globale sui dati di output della rete. Questo pooling globale riduce la dimensione dei dati in uscita e prepara la rete per il layer di output finale.
