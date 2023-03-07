@@ -17,17 +17,30 @@ network = 'resnet50';
 network = 'vgg16';
 ```
 
+
 <br>
+
 
 ## **Caricamento dei dati**
 Per l'esecuzione di questi esperimenti vengono caricati train e test set. I dati sono stati caricati utilizzando degli `imageDatastore`, andando a leggere le immagini dalle cartelle corrispondendi all'interno della macro-cartella dataset. Ad ogni immagine è associata una label che indica il sesso dell'utente rappresentato e questa è stata recuperata dal nome della sottocartella in cui è contenuta l'immagine.
+
+```MATLAB
+% caricamento dei dati
+imdsTrain = imageDatastore ('dataset/TrainSet/', 'IncludeSubfolders', true, 'LabelSource', 'foldernames');
+imdsTest = imageDatastore ('dataset/TestSet/', 'IncludeSubfolders', true, 'LabelSource', 'foldernames');
+%numero di dati caricati
+numTrainImages = numel (imdsTrain.Labels);
+numTestImages = numel(imdsTest.Labels);
+```
 
 Una volta caricato il dataset si può decidere con la variabile `printTrainingSet` se visualizzare o meno alcune immagini del training set.
 
 
 ![](../img/Stampa_Train.png)
 
+
 <br>
+
 
 ## **Caricamento del modello pre-addestrato**
 Come anticipato sono stati eseguiti esperimenti utilizzando diverse reti, per ognuna di queste si sono estratte le feature delle immagini prendendole dall'ultimo livello fully connected prima del layer di classificazione. Per ogni rete poi si può decidere se far girare l'esperimento su `CPU`, `GPU` o `multi-GPU` in base all'inizializzazione della variabile `env`.  
@@ -53,6 +66,8 @@ else
 end
 ```
 
+<br>
+
 ## Preprocessing delle img
 Per ogni immagine viene effettuato un preprocessing per ottenere un input di dimensione consona alla rete scelta. Per fare ciò è stato utilizzato il metodo `augmentedImageDatastore` che permette di applicare delle trasformazioni alle immagini.  
 Le dimensioni richieste sono di 227x227 per AlexNet e VGG16 e 224x224 per ResNet-18 e ResNet-50.
@@ -63,7 +78,9 @@ augimdsTrain = augmentedImageDatastore(inputSize(1:2), imdsTrain);
 augimdsTest = augmentedImageDatastore(inputSize(1:2), imdsTest);
 ```
 
+
 <br>
+
 
 ## **Estrazione delle features**
 A questo punto vengono estratte le feature utilizzando il metodo `activations` che prende in input la rete, il dataset e il layer da cui estrarre le features.  
@@ -76,19 +93,21 @@ Train = imdsTrain. Labels;
 YTest = imdsTest.Labels;
 ```
 
+
 <br>
 
+
 ## Classificazione con SVM
-Dopo l'estrazione delle features viene utilizzato un classificatore SVM per classificare le immagini in base al sesso. Per mandare i dati in pasto al classificatore è stato necessario fare una conversione delle labels e delle features a `double`, e la matrice delle features è stata anche modificata per diventare una matrice sparsa per cercare di rispiarmiare un po' di spazio.
+Dopo l'estrazione delle features viene utilizzato un classificatore SVM per classificare le immagini in base al sesso. Per mandare i dati in pasto al classificatore è stato necessario fare una conversione delle labels a `double`, mentre le features, oltre ad essere convertite a `double`, sono state rielaborate in una matrice sparsa per cercare di contenere lo spazio occupato in memoria.
 
 ```MATLAB
-Train = double (YTrain(:, 1));
-YTest = double(YTest (:, 1));
-featuresTrain = sparse (double (featuresTrain1));
+YTrain = double (YTrain(:, 1));
+YTest = double(YTest(:, 1));
+featuresTrain = sparse (double(featuresTrain1));
 featuresTest = sparse (double(featuresTest1));
 ```
 
- E dopo aver impostato le opzioni dell'addestramento si è potuto procedere con l'addestramento del classificatore e alla predizione delle labels sul test set.
+Dopo aver impostato le opzioni dell'addestramento, si è potuto procedere con l'addestramento del classificatore e la predizione delle labels sul test set.
 
 ```MATLAB
 options = trainingOptions ('sgdm',
@@ -104,8 +123,8 @@ model = train(Train, featuresTrain, options, '-s 2');
 
 YPred = predict(YTest, featuresTest, model);
 ```
-Di seguito verranno spiegate le opzioni dell'addestramento:
 
+Tra le vaire opzioni dell'addestramento disponibili sono state utilizzate :
 - L'opzione `'sgdm'` indica l'ottimizzatore scelto, ovvero la discesa stocastica del gradiente
 - `'LearnRateSchedule'` indica che il tasso di apprendimento del modello verrà modificato in base ad uno schema predefinito.
 - `'LearnRateDropFactor'` indica la frazione di riduzione del tasso di apprendimento. In questo caso, il tasso di apprendimento verrà ridotto del 20% quando viene raggiunto il periodo di riduzione del tasso di apprendimento, poiché come paramentro è impostato 0,2.
@@ -117,6 +136,7 @@ Di seguito verranno spiegate le opzioni dell'addestramento:
 
 
 <br>
+
 
 ## Risultati degli esperimenti
 
@@ -131,7 +151,9 @@ Resnet-50, oltre ad avere le prestazioni migliori, si è rivelata essere la seco
 
 Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vedere la matrice di confusione e qualche esempio di classificazione.
 
+
 <br>
+
 
 **AlexNet**
 <table>
@@ -148,7 +170,6 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 ![](../img/results/ALEXNET.png)
 
 </td></tr> </table>
-
 
 
 Resnet-18
@@ -168,13 +189,7 @@ Resnet-18
 </td></tr> </table>
 
 
-
-
-
-
-
 Resnet-50 confusion 
-
 <table>
 <tr><td>
 
@@ -183,9 +198,7 @@ Resnet-50 confusion
 | **P Female**  |  95.3% <br> (11671)   |  6.1% <br> (470)      |
 | **P Male**    |  4.7% <br> (576)      |  93.9% <br> (7245)    |
 
-
 </td><td>
-
 
 ![](../img/results/RESNET-50.png)
 
@@ -194,7 +207,6 @@ Resnet-50 confusion
 
 
 VGG16 confusion 
-
 <table>
 <tr><td>
 
@@ -207,29 +219,11 @@ VGG16 confusion
 
 ![](../img/results/VGG.png)
 
-</td></tr> </table>
+</td></tr></table>
 
 
 <br>
+
 
 ## Conclusioni
 Come possiamo notare in tutti gli esperimenti le reti neurali sono riuscite a classificare correttamente il sesso di una persona con un'accuratezza superiore al 92.7%. Nei pochi casi in cui la rete ha sbagliato, come possiamo notare nei due esempi di ResNet-18 e di VGG16, in entrambi i casi i soggetti avevano capelli lunghi, non era visibile il pomo d'adamo e i lineamenti sono tondeggianti.
-
-
-
-<br>
-<br>
-
-# FINE TUNING ALEXNET
-|               |                 |
-| -----------   | --------------- |
-| **Acc. Val**  | 97.43%          |
-| **Acc. Test** | 96.59%          |
-| **Rateo**     | 19281/19962     |  
-| **Time**      | 28071.5158s     |  
-
-Fine Tuned Alexnet confusion
-|               | **T Female**          |  **T Male**           |
-| ---           | ---                   | ---                   |
-| **P Female**  |  96.8% <br> (11857)   |  3.8% <br> (291)      |
-| **P Male**    |  3.2% <br> (390)      |  96.2% <br> (7424)    |
