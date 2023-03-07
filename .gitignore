@@ -2,5 +2,8 @@
 !/.gitignore
 split
 feature
-!dataset
 dataset/*
+!dataset/TestSet_features.txt
+!dataset/TrainSet_features.txt
+!dataset/ValSet_features.txt
+dataset.zip
