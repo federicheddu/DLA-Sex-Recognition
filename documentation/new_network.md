@@ -69,4 +69,21 @@ Come si può notare dall'immagine sopra, l'addestramento è stato effettuato in 
 
 <br>
 
-## **Test della nuova architettura**
+## **Risultati della nuova architettura**
+Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matrice di confusione ottenendo i seguenti risulati:
+
+|               |                 |
+| -----------   | --------------- |
+| **Accuracy**  | 96.09%          |
+| **Rateo**     | 19182/19962     |  
+| **Time**      | 5178.625s       |  
+
+**Fine Tuned Alexnet confusion**
+|               | **T Female**          |  **T Male**           |
+| ---           | ---                   | ---                   |
+| **P Female**  |  97.03% <br> (11916)  |  5.8% <br> (449)      |
+| **P Male**    |  2.7% <br> (331)      |  94.2% <br> (7266)    |
+
+Di seguito possiamo osservare alcune immagini di test e la loro classificazione effettuata dalla rete:
+
+![](../img/custom_network/first_net_pred.png)
