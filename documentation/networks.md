@@ -8,30 +8,18 @@
 > - [SVM](#svm)
 
 <br>
+
+
 ## **AlexNet**
 AlexNet è il nome dato a un'architettura di rete neurale convoluzionale che ha vinto il concorso LSVRC nel 2012.
 
 La LSVRC (Large Scale Visual Recognition Challenge) è una competizione in cui i team di ricerca valutano i loro algoritmi su un enorme set di immagini etichettate (da ImageNet) e competono per ottenere una maggiore accuratezza su diversi compiti di riconoscimento visivo.
 
-AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
-
-
-
-Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ultimo, il quele produce un output con una softmax una distribuzione di probabilità sulle sue 1000 etichette di classe disponibili come output (impostazione originaria dell'archittuttura). Il dropout viene applicato nei primi due strati completamente connessi. I neuroni degli strati completamente connessi sono collegati a tutti i neuroni dello strato precedente.
-
-
-## **AlexNet**
-AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
-AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
-
 ![](../img/alexnet_structure.png)
 
-Nel primo strato si riceve l'immagine come input e la si ridimensiona per adattarsi alla rete neurale, successivamente i cinque strati convolutivi itilizzano filtri per estrarre le caratteristiche visive dall'immagine.  
-Ogni strato convolutivo utilizza un insieme di filtri che scorrono sull'immagine eseguendo una combinazione lineare dei valori dei pixel e producendo una nuova immagine chiamata "*feature map*".  
-Gli strati fully connected sono due e hanno la funzione di classificare l'immagine in base alle caratteristiche estratte dai layer convolutivi.  
-Il layer di output è un layer softmax che restituisce la probabilità che l'immagine appartenga ad una delle 2 classi.
+AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
-AlexNet è composta da 8 strati principali, di cui i primi 5 sono convoluzionali e gli ultimi 3 sono completamente connessi.
+Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ultimo, il quele produce un output con una softmax una distribuzione di probabilità sulle sue 1000 etichette di classe disponibili come output (impostazione originaria dell'archittuttura). Il dropout viene applicato nei primi due strati completamente connessi. I neuroni degli strati completamente connessi sono collegati a tutti i neuroni dello strato precedente.
 
 - L'input è un'immagine di input RGB (rosso, verde, blu) di dimensione 224x224.
 - Nel primo strato questa immagine viene convoluta con 96 filtri di dimensione 11x11, con uno stride di 4 pixel. Ciò significa che ogni filtro scansiona l'immagine con un movimento di 4 pixel alla volta. Il risultato di questa convoluzione è una mappa di caratteristiche di dimensioni 55x55x96.
