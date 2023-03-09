@@ -49,6 +49,8 @@ numTestImages = numel(imdsTest.Labels);
 
 Dopodiché le immagini sono state ridimensionate ad una dimensione di 128x128 grazie all'utilizzo di `augmentedImageDatastore` come per gli altri esperimenti.
 
+<br>
+
 ## **Creazione della nuova architettura**
 Come primo test abbiamo creato un architettura realtivamente piccola composta da 9 livelli, di cui:
 
@@ -118,6 +120,8 @@ Di seguito possiamo osservare alcune immagini di test e la loro classificazione 
 
 Il modello si concentra sopratutto sul viso, nella parte inferiore, e sui capelli.
 
+<br>
+
 ## **Analisi degli errori**
 Possiamo osservare che la rete non ha commesso molti errori e i pochi che ha commesso sono stati commessi principalmente su immagini che presentavano soggetti che indossavano cappelli, quindi si presentava un problema di occlusione, oppure su immaigini che sono dovute essere pre-processate pesantemente e presentavano ricostruzione o parti nere dovute alla rotazione dell'immagine.
 
@@ -126,6 +130,8 @@ Di seguito alcuni esempi con gradCam associata:
 ![](../img/custom_network/first_net_errgrad.png)
 
 Gli esempi confermano come nella maggior parte delle foto si presenti un problema di occlusione, che sia una mano davanti alla faccia, un cappello o i capelli che coprono il viso. Altri probelemi riscontrati sono pose di profilo e ricostruzione dell'immagine.
+
+<br>
 
 ## Conclusioni
 La rete riesce a tirare fuori dei buoni risultati nonostante la sua dimensione molto ridotta. Le considerazioni, simili a quelle riportate per l'esperimento dei finetuning, sono che questo non è il metodo migliore per la questo problema prendendo in considerazione risultati e tempo necessario per raggiungerli.
@@ -152,6 +158,8 @@ Abbiamo quindi rimodulato il codice dell'esperimento aggiungendo un flag in modo
 ```matlab
 dualinput = 1;
 ```
+
+<br>
 
 ## **La rete**
 
@@ -183,6 +191,7 @@ lgraph = connectLayers(lgraph,"features","cat/in2");
 Il layer aggiuntivo viene collegato al concatenation layer con il seguente risultato:
 ![](../img/custom_network/second_net.png)
 
+<br>
 
 ## **Il caricamento dei dati e problemi derivanti**
 Abbiamo esplorato due possibili approcci per il caricamento dei dati:
@@ -190,6 +199,8 @@ Abbiamo esplorato due possibili approcci per il caricamento dei dati:
 - utilizzare gli `imageDatastore`
 
 > **NOTA:** verranno riportate le differenze rispetto al precedente esperimento
+
+<br>
 
 ### **Caricamento diretto in RAM**
 Caricando il dataset in RAM dagli `imageDatastore` richiede uno spazio di 17.6GB, il che introduce una prima limitazione hardware.
@@ -216,6 +227,8 @@ dsTrain = combine(dsX1Train,dsX2Train,dsTTrain);
 
 Nel momento in cui poi viene avviato il train della rete si out of memory e non è stato possibile concludere l'esperimento.
 
+<br>
+
 ### **Utilizzo dei datastore**
 Il secondo approccio, per evitare di esaurire la RAM, è stato quello continuare ad utilizzare gli `imageDatastore`.
 
@@ -231,9 +244,11 @@ Poi al momento della `combine`:
 ```matlab
 dsX2Train = arrayDatastore(F);
 dsTTrain = arrayDatastore(TTrain);
-dsTrain = combine(augimdsTest,dsX2Train,dsTTrain);
+dsTrain = combine(augimdsTrain,dsX2Train,dsTTrain);
 ```
 Qui invece al momento del train si presenta il problema che la rete si aspetta una feature per immagine ed invece se ne trova 39, questo è dovuto all'impossibilità di aggiungere il parametro `IterationDimension=42` come nel primo approccio.
+
+<br>
 
 ## **Conclusioni esperimento con metadati**
 Il tentativo di creare una rete con due input si è quindi interrotto non trovando una soluzione per il funzionamento.

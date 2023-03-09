@@ -27,6 +27,8 @@ printConfMatrix = 1;
 printGradMap = 1;
 ```
 
+<br>
+
 ## **Caricamento dei dati**
 Per caricare i dati abbiamo utilizzato il metodo `imageDatastore` che permette di caricare le immagini e le label associate. In questo caso abbiamo caricato le immagini di training, validation e test set, ognuno dei quali corrisponde ad una cartella nella cartella del dataset.  
 Per ogni immagine è stata associata una label che indica il sesso dell'utente rappresentato e questa è stata recuperata dal nome della sottocartella in cui è contenuta l'immagine.
@@ -42,6 +44,8 @@ numValImages = numel(imsValidation.Labels);
 numTestImages = numel(imdsTest.Labels);
 ```
 
+<br>
+
 ## **Caricamento della rete e ridimensionamento**
 È stata caricata alexnet e dopodiché sono state ridimensionate le immagini in modo da essere compatibili con la rete scelta.
 
@@ -54,6 +58,8 @@ augimdsTrain = augmentedImageDatastore(inputSize(1:2), imdsTrain);
 augimdsValidation = augmentedImageDatastore(inputSize(1:2), imdsValidation);
 augimdsTest = augmentedImageDatastore (inputSize(1:2), imdsTest);
 ```
+
+<br>
 
 ## **Fine-tuning**
 Per effettuare il fine-tuning sono salvati tutti i layer della rete tranne gli ultimi tre, quindi ne sono stati aggiunti altrettanti e viene poi riaddestrata la rete risultante.  
@@ -91,6 +97,8 @@ Dato che si tratta di un fine-tuning abbiamo scelto un numero di epoche basso pa
 
 ![](../img/results/finetuning_alexnet.png)
 
+<br>
+
 ## **Risultati**
 Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matrice di confusione ottenendo i seguenti risulati:
 
@@ -111,6 +119,8 @@ Di seguito possiamo osservare alcune immagini di test e la loro classificazione 
 ![](../img/results/fineALEX_pred.png) ![](../img/results/fineALEX_grad.png)
 
 Come possiamo notare il modello si concentra di più sul collo, dove è presente o meno il pomo d'adamo, e sul viso, nella zona inferiore, dove può essere presente o meno la barba e dove sono ben distinguibili i tratti maschili da quelli femminili con zigomi e mento più pronunciati.
+
+<br>
 
 ## **Conclusioni**
 Il modello ha ottenuto un'accuratezza di circa il 97.4% sul validation set e circa il 96.6% sul test set, con un tempo di addestramento di circa 7 ore e 45 minuti.
