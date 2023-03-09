@@ -66,7 +66,7 @@ STRUTTURA DELLA REPOSITORY
 │   ├── features_extraction.md
 │   ├── metadata_concatenation.md
 │   ├── fine_tuning.md
-│   └── new_network.md
+│   └── custom_network.md
 ├── img
 │   └── ···
 │
