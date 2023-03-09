@@ -11,7 +11,7 @@
 
 ---
 
-<br><br>
+<br>
 
 > ### **Table of Content**
 > 1. [Introduzione al progetto](#introduzione-al-progetto)
@@ -19,15 +19,16 @@
 > 1. [Esperimenti e documentazione](#esperimenti-e-documentazione)
 >    - [Documentazione](#documentazione)
 > 1. [Utilizzo del progetto](#utilizzo-del-progetto)
+>    - [Clonare la repository](#clone-la-repository)
 >    - [Requisiti di MATLAB](#requisiti-di-matlab)
 >    - [Inserimento del dataset](#inserimento-del-dataset)
->    - [Settare le variabili dei file](#settare-le-variabili-dei-file)
+>    - [Esecuzione degli esperimenti](#esecuzione-degli-esperimenti)
 
-<br><br>
+<br>
 
 ---
 
-<br><br>
+<br>
 
 ## **Introduzione al progetto**
 
@@ -39,7 +40,7 @@ Il progetto è stato sviluppato in MATLAB, utilizzando il Deep Learning Toolbox 
 
 Per preparare il dataset agli esperimenti sono stati scritti alcuni script in C che permettono di eseguire la divisione del dataset in training, validation e test set, di creare le cartelle necessarie per il caricamento delle immagini e di fare il parsing dei metadati disponibili in modo da caricarli con facilità in MATLAB.
 
-<br><br>
+<br>
 
 ## **Il dataset**
 
@@ -52,7 +53,7 @@ Nel nostro caso è stata utilizzata la versione [Align & Cropped](https://drive.
 
 Per la preparazione e l'utilizzo del dataset rimandiamo alle istruzioni conenute nei paragrafo [[Utilizzo del progetto](#utilizzo-del-progetto)].
 
-<br><br>
+<br>
 
 ## **Esperimenti e documentazione**
 Sonos stati effettuati diversi esperimenti, ognuno con un approccio diverso:
@@ -61,7 +62,7 @@ Sonos stati effettuati diversi esperimenti, ognuno con un approccio diverso:
 - Fine Tuning di una rete pre-addestrata
 - Creazione di una rete da zero
 
-<br>
+
 
 Di seguito i link alla documentazione completa del progetto:
 > ### **Documentazione**
@@ -73,12 +74,12 @@ Di seguito i link alla documentazione completa del progetto:
 >
 > *[Link alla cartella con tutta la documentazione](documentation/)*
 
-<br><br>
+<br>
 
 ## **Utilizzo del progetto**
 Di seguito le istruzioni per l'utilizzo dei file contenenti gli esperimenti e poterli replicare, per preparare il dataset (*non contenuto in questa repository per problemi di spazio*) e il materiale aggiuntivo.
 
-<br>
+
 
 ### **Clonare la repository**
 Clonare la repository con GitHub Desktop o con il comando:
@@ -86,7 +87,7 @@ Clonare la repository con GitHub Desktop o con il comando:
 git clone https://github.com/federicheddu/DLA-Sex-Recognition.git
 ```
 
-<br>
+
 
 ### **Requisiti di MATLAB**
 Per poter replicare ed utilizzare il progetto è necessario avere installato su MATLAB i seguenti add-on:
@@ -120,7 +121,7 @@ Il classificatore SVM è stato implementato utilizzando il [libsvm](https://www.
 Quindi in caso di utilizzo di MATLAB su Windows o Linux non è necessario compilare le funzioni o effettuare altre operazioni.  
 In caso di incompatibilità col proprio sistema operativo si possono compilare le funzioni necessarie nella cartella [`liblinear-master/matlab`](liblinear-master/matlab) utilizzando il comando `make` da terminale come suggerito nella [guida](liblinear-master/matlab/README) contenuta nella stessa cartella (in inglese).
 
- <br>
+
 
 ### **Inserimento del dataset**
 È necessario scaricare il dataset CelebA nella sua versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ)
@@ -134,7 +135,7 @@ Una volta inserite le immagini è necessario compilare ed eseguire il file C den
 
 Non è necessario eseguire invece il file `features.c` che è stato utilizzato per creare i file [`TrainSet_features.txt`](dataset/TrainSet_features.txt), [`TestSet_features.txt`](dataset/TestSet_features.txt) e [`ValSet_features.txt`](dataset/ValSet_features.txt), contenenti i metadati messi a disposizione dal dataset divisi e parsati nel modo corretto per essere letti da MATLAB, in quanto questi file sono già messi a disposizione in questa repository all'interno della cartella [`dataset`](dataset).
 
-<br>
+
 
 ### **Esecuzione degli esperimenti**
 Una volta eseguiti tutti i passaggi preliminari è possibile eseguire gli esperimenti.
