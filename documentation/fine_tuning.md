@@ -24,6 +24,7 @@ All'inizio del file è possibile impostare alcune variabili che influenzano il c
 printTrainingSet = 1;
 printTestSet = 1;
 printConfMatrix = 1;
+printGradMap = 1;
 ```
 
 ## **Caricamento dei dati**

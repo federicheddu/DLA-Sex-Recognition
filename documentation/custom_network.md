@@ -32,6 +32,7 @@ In maniera analoga agli altri esperimenti sono stati messi a disposizione dei fl
 printTrainingSet = 1;
 printTestSet = 1;
 printConfMatrix = 1;
+printGradMap = 1;
 printErrors = 1;
 ```
 
