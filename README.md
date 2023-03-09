@@ -23,6 +23,7 @@
 >    - [Requisiti di MATLAB](#requisiti-di-matlab)
 >    - [Inserimento del dataset](#inserimento-del-dataset)
 >    - [Esecuzione degli esperimenti](#esecuzione-degli-esperimenti)
+> 1. [Hardware e limitazioni](#hardware-e-limitazioni)
 
 <br>
 
@@ -148,3 +149,13 @@ Gli esperimenti sono stati suddivisi in 3 file MATLAB Live Script:
 Per eseguire gli esperimenti è necessario aprire i file MATLAB Live Script e cliccare su `Run` per eseguire il codice.
 
 Per maggiori dettagli sui singoli file si rimanda alla documentazione dei singoli esperimenti in cui vengono descritti step-by-step i vari file. Si possono trovare i link nella sezione [[Documentazione](#documentazione)].
+
+<br>
+
+## **Hardware e limitazioni**
+Gli esperimenti sono stati eseguiti su un computer con le seguenti caratteristiche:
+- OS: Ubuntu 18.04.5 LTS
+- CPU: Intel i9-7920X
+- GPU: NVIDIA GeForce GTX 2080 Ti x2
+- RAM: 128GB
+È possibile che alcuni esperimenti non siano eseguibili o risultino molto lenti su computer con meno risorse in quanto si tratta di un dataset di grosse dimensioni.
