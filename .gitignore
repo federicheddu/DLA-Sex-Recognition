@@ -1,7 +1,9 @@
 .*
 !/.gitignore
 split
+split.exe
 feature
+feature.exe
 dataset/*
 !dataset/TestSet_features.txt
 !dataset/TrainSet_features.txt

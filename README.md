@@ -7,8 +7,54 @@
 | Federico Meloni       | 60/73/65243   | <f.meloni62@studenti.unica.it>    |
 | Luca Faccin           | 60/73/65236   | <l.faccin@studenti.unica.it>      |
 
-Questo progetto univeristario si pone l'obiettivo di classificare immagini del volto di persone famose in base al loro sesso attraverso diversi esperimenti di Deep Learning. Il dataset di partenza è [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), in particolare la versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ) che contiene le immagini già pulite, con le facce allineate e centrata. Il dataset è stato scelto per la sua semplicità e per la sua dimensione, che permette di eseguire i test in tempi ragionevoli.
+<br>
 
+---
+
+<br><br>
+
+> ### **Table of Content**
+> 1. [Introduzione al progetto](#introduzione-al-progetto)
+> 1. [Il dataset](#il-dataset)
+> 1. [Esperimenti e documentazione](#esperimenti-e-documentazione)
+>    - [Documentazione](#documentazione)
+> 1. [Utilizzo del progetto](#utilizzo-del-progetto)
+>    - [Requisiti di MATLAB](#requisiti-di-matlab)
+>    - [Inserimento del dataset](#inserimento-del-dataset)
+>    - [Settare le variabili dei file](#settare-le-variabili-dei-file)
+
+<br><br>
+
+---
+
+<br><br>
+
+## **Introduzione al progetto**
+
+Questo progetto univeristario si pone l'obiettivo di classificare immagini del volto di persone famose in base al loro sesso attraverso diversi esperimenti e tecniche di Deep Learning.  
+
+Il dataset di partenza è [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html). Questo dataset è stato scelto per la sua semplicità e per la sua dimensione, che permette di eseguire i test in tempi ragionevoli.
+
+Il progetto è stato sviluppato in MATLAB, utilizzando il Deep Learning Toolbox e alcuni add-on collegati per i vari modelli scelti. È stato fatto utilizzo anche del Parallel Computing Toolbox per l'utilizzo della GPU.
+
+Per preparare il dataset agli esperimenti sono stati scritti alcuni script in C che permettono di eseguire la divisione del dataset in training, validation e test set, di creare le cartelle necessarie per il caricamento delle immagini e di fare il parsing dei metadati disponibili in modo da caricarli con facilità in MATLAB.
+
+<br><br>
+
+## **Il dataset**
+
+CelebFaces Attributes Dataset, abbreviato CelebA, è un dataset di immagini del viso di celebrità con relativi attributi.  
+Contiene 202.599 immagini di volti in cinque posizioni di riferimento, con 40 annotazioni binarie degli attributi per ogni immagine. Attualmente include dati relativi a oltre 10.000 celebrità.
+
+CelebA include molte immagini diverse che coprono varie pose e variazioni di sfondo. Fornisce annotazioni dettagliate per le immagini utili per la formazione di modelli di apprendimento automatico e di visione artificiale.
+
+Nel nostro caso è stata utilizzata la versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ) che contiene le immagini già pulite, con le facce allineate e centrata.
+
+Per la preparazione e l'utilizzo del dataset rimandiamo alle istruzioni conenute nei paragrafo [[Utilizzo del progetto](#utilizzo-del-progetto)].
+
+<br><br>
+
+## **Esperimenti e documentazione**
 Sonos stati effettuati diversi esperimenti, ognuno con un approccio diverso:
 - Feature Extraction con AlexNet, ResNet e VGG16 per poi utilizzare un classificatore SVM Lineare
 - Integrazione dei metadati disponibili all'interno dell'esperimento precedente
@@ -24,72 +70,80 @@ Di seguito i link alla documentazione completa del progetto:
 > - [esperimento] [Integrazione dei metadati](documentation/metadata_concatenation.md)
 > - [esperimento] [Fine Tuning di AlexNet](documentation/fine_tuning.md)
 > - [esperimento] [Creazione di una rete da zero](documentation/new_network.md)
+>
+> *[Link alla cartella con tutta la documentazione](documentation/)*
+
+<br><br>
+
+## **Utilizzo del progetto**
+Di seguito le istruzioni per l'utilizzo dei file contenenti gli esperimenti e poterli replicare, per preparare il dataset (*non contenuto in questa repository per problemi di spazio*) e il materiale aggiuntivo.
 
 <br>
 
----
+### **Clonare la repository**
+Clonare la repository con GitHub Desktop o con il comando:
+```bash
+git clone https://github.com/federicheddu/DLA-Sex-Recognition.git
+```
 
-<br><br>
-
-> ### **README - Table of content**
-> 1. [Utilizzo](#utilizzo-del-progetto)
->    - [Requisiti](#requisiti-di-matlab)
->    - [Inserimento del dataset](#inserimento-del-dataset)
->    - [Settare le variabili dei file](#settare-le-variabili-dei-file)
-
-<br><br>
-
----
-
-## **Utilizzo del progetto**
-Di seguito le istruzioni per l'utilizzo dei file MATLAB
+<br>
 
 ### **Requisiti di MATLAB**
+Per poter replicare ed utilizzare il progetto è necessario avere installato su MATLAB i seguenti add-on:
 
-1. Installare su MATLAB il Statistic and Machine Learning Toolbox  
+- Installare su MATLAB il Statistic and Machine Learning Toolbox  
 `Add On: Home > Add-On > Statistic and Machine Learning Toolbox`
 
-2. Installare su MATLAB il Deep Learning Toolbox  
+- Installare su MATLAB il Deep Learning Toolbox  
 `Add On: Home > Add-On > Deep Learning Toolbox`
 
-3. Installare su MATLAB il Deep Learning Toolbox Model for AlexNet Network  
+- Installare su MATLAB il Deep Learning Toolbox Model for AlexNet Network  
 `Add On: Home > Add-On > Deep Learning Toolbox Model for AlexNet Network`
 
-4. Installare su MATLAB il Deep Learning Toolbox Model for ResNet-18 Network  
+- Installare su MATLAB il Deep Learning Toolbox Model for ResNet-18 Network  
 `Add On: Home > Add-On > Deep Learning Toolbox Model for ResNet-18 Network`
 
-5. Installare su MATLAB il Deep Learning Toolbox Model for ResNet-50 Network  
+- Installare su MATLAB il Deep Learning Toolbox Model for ResNet-50 Network  
 `Add On: Home > Add-On > Deep Learning Toolbox Model for ResNet-50 Network`
 
-6. Installare su MATLAB il Deep Learning Toolbox Model for VGG-16 Network  
+- Installare su MATLAB il Deep Learning Toolbox Model for VGG-16 Network  
 `Add On: Home > Add-On > Deep Learning Toolbox Model for VGG-16 Network`
 
-7. Installare su MATLAB il Plot Confusion Matrix  
+- Installare su MATLAB il Plot Confusion Matrix  
 `Add On: Home > Add-On > Plot Confusion Matrix by Vane Tshitoyan`
 
-8. Installare su MATLAB il Parallel Computing Toolbox  
+- Installare su MATLAB il Parallel Computing Toolbox  
 `Add On: Home > Add-On > Parallel Computing Toolbox`  
 *facoltativo se si vuole usare la GPU ma vivamente consigliato*
 
---- 
+Il classificatore SVM è stato implementato utilizzando il [libsvm](https://www.csie.ntu.edu.tw/~cjlin/libsvm/). Questa repository contiene una copia della libreria nella cartella `liblinear-master` e le funzioni già compilate per MATLAB nella home della demo sia per Windows che per Linux.
+Quindi in caso di utilizzo di MATLAB su Windows o Linux non è necessario compilare le funzioni o effettuare altre operazioni.  
+In caso di incompatibilità col proprio sistema operativo si possono compilare le funzioni necessarie nella cartella [`liblinear-master/matlab`](liblinear-master/matlab) utilizzando il comando `make` da terminale come suggerito nella [guida](liblinear-master/matlab/README) contenuta nella stessa cartella (in inglese).
 
-DA RIVEDERE DOPO QUESTA SEZIONE
-
-1. Clonare la repository  
-`git clone https://github.com/federicheddu/DLA-Sex-Recognition.git`
-
-2. Aprire uno dei file (ogni file corrisponde ad un task specifico):  
-    1. `alex_res_vgg.mlx`: il file utilizza dei network pre-trainati per fare la feature extraction e la classificazione usando SVM
-    1. ```finetuning.mlx```: il file che esegue il fine tuning
-    1. ```new_network.mlx```: il file con la rete creata da zero
+ <br>
 
 ### **Inserimento del dataset**
-Scaricare il dataset dal link [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), in particolare la versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ)
+È necessario scaricare il dataset CelebA nella sua versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ)
 
-<br>TI LASCIO L'ONORE DI SCRIVERE LE SEZIONI PER LO SCRIPT DEL DATASET E DELLE FEATURES 
+[`https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ`](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ)
 
-### **Settare le variabili dei file**
-Ogni file ha delle variabili all'inizio una sezione per poter decidere alcune variazioni all'esecuzione come il network o delle stampe.
+Dopodiché è necessario estrarre l'archivio inserendo le immagini nella cartella [`dataset`](dataset).
 
-### **Eseguire lo script**
-se si sono eseguiti a dovere i passi precedenti tutti i file dovrebbero essere eseguibili senza problemi (per alcuni è richiesta una più che buona capacità delle RAM).
+Una volta inserite le immagini è necessario compilare ed eseguire il file C denominato [`split.c`](split.c) che, andando a pescare le informazioni dai file [`list_attr_celeba.txt`](metadata/list_attr_celeba.txt) e [`list_eval_partition.txt`](metadata/list_eval_partition.txt) presente nella cartella [`metadata`](metadata), crea tutte le cartelle e sottocartelle necessarie per il caricamento su MATLAB.
+> **NOTA**: il file `split.c` è stato scritto per essere eseguito su Linux, in caso di utilizzo di Windows è necessario compilare ed eseguire il file `split.c` utilizzando un terminale bash.
+
+Non è necessario eseguire invece il file `features.c` che è stato utilizzato per creare i file [`TrainSet_features.txt`](dataset/TrainSet_features.txt), [`TestSet_features.txt`](dataset/TestSet_features.txt) e [`ValSet_features.txt`](dataset/ValSet_features.txt), contenenti i metadati messi a disposizione dal dataset divisi e parsati nel modo corretto per essere letti da MATLAB, in quanto questi file sono già messi a disposizione in questa repository all'interno della cartella [`dataset`](dataset).
+
+<br>
+
+### **Esecuzione degli esperimenti**
+Una volta eseguiti tutti i passaggi preliminari è possibile eseguire gli esperimenti.
+
+Gli esperimenti sono stati suddivisi in 3 file MATLAB Live Script:
+- [`alex_res_vgg.mlx`](alex_res_vgg.mlx): esperimento con delle reti pre-addestrate per fare la feature extraction e la classificazione usando SVM
+- [`finetuning.mlx`](finetuning.mlx): esperimento che esegue il fine tuning di una rete pre-trainata
+- [`custom_network.mlx`](custom_network.mlx): esperimento con la rete creata da zero
+
+Per eseguire gli esperimenti è necessario aprire i file MATLAB Live Script e cliccare su `Run` per eseguire il codice.
+
+Per maggiori dettagli sui singoli file si rimanda alla documentazione dei singoli esperimenti in cui vengono descritti step-by-step i vari file. Si possono trovare i link nella sezione [[Documentazione](#documentazione)].
