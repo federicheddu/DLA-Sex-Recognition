@@ -87,3 +87,11 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 Di seguito possiamo osservare alcune immagini di test e la loro classificazione effettuata dalla rete:
 
 ![](../img/custom_network/first_net_pred.png)
+
+## **Analisi degli errori**
+Possiamo osservare che la rete non ha commesso molti errori e i pochi che ha commesso sono stati commessi principalmente su immagini che presentavano soggetti che indossavano cappelli, quindi si presentava un problema di occlusione, oppure su immaigini che sono dovute essere pre-processate pesantemente e presentavano ricostruzione o parti nere dovute alla rotazione dell'immagine.
+
+Di seguito alcuni esempi con gradCam associata:
+![](../img/custom_network/first_net_err.png) ![](../img/custom_network/first_net_errgrad.png)
+
+Gli esempi confermano come nella maggior parte delle foto si presenti un problema di occlusione, che sia una mano davanti alla faccia, un cappello o i capelli che coprono il viso. Altri probelemi riscontrati sono pose di profilo e ricostruzione dell'immagine.
