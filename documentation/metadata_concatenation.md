@@ -1,7 +1,26 @@
-## Combinazione metadati e feature
+# Combinazione metadati e feature
 Dato che il dataset CelebA a nostra disposizione, oltre che le immagini, metteva a disposizione una serie di metadati per ogni immagine, abbiamo deciso di provare a combinare queste informazioni con le feature estratte dalle reti neurali utilizzate nell'esperimento di feature extraction.
 
 In questa sezione andremo a descrivere le integrazioni fatte all'[esperimento di feature extraction](../alex_res_vgg.mlx), per informazioni sul resto del codice rifarsi a quella sezione.
+
+>
+> ### **Table of Contents**
+>
+>   1. [I metadati](#i-metadati)
+>   1. [Attivare la combinazione dei metadati](#attivare-la-combinazione-dei-metadati)
+>   1. [Estrazione e caricamento dei metadati](#estrazione-e-caricamento-dei-metadati)
+>   1. [Concatenazione delle features](#concatenazione-delle-features)
+>   1. [Normalizzazione delle features](#normalizzazione-delle-features)
+>   1. [Risultati - senza normalizzazione](#risultati-senza-normalizzazione)
+>   1. [Risultati - con normalizzazione](#risultati-con-normalizzazione)
+>   1. [Analisi degli errori](#analisi-degli-errori)
+>   1. [Conclusioni](#conclusioni)
+>
+> File di riferimento: [`alex_res_vgg.mlx`](../custom_network.mlx)
+>
+
+
+## **I metadati**
 
 Questi metadati consistono in feature binarie ad alto livello quali:
 - 5_o_Clock_Shadow
@@ -204,6 +223,15 @@ Di seguito possiamo analizzare i risultati ottenuti per ogni rete andando a vede
 </td></tr>
 
 </table>
+
+<br>
+
+## **Analisi degli errori**
+È importante andare a vedere quali possono essere gli errori commessi da questi esperimenti. Prenderemo come esempio gli errori di alexnet con concatenazione dei metadati (gli errori sono simili in tutti gli altri esperimenti con concatenazione):
+
+![](../img/results/alexconcat_errors.png)
+
+Come possiamo notare l'errore più comune è dato dalla presenza di capelli lunghi nei soggetti maschili che vengono classificati come donne, altri motivi di errore possono essere riconducibili a presenze di scritte o alla ricostruzione dell'immagine durante il preprocessing che ha portato ad avere i visi centrati. Altri visibili cause di errore sono la presenza di cappelli che provocano dell'occlusione. Altro fattore che non ha aiutato è l'illuminazione non regolare.
 
 <br>
 

@@ -1,4 +1,4 @@
-# Creazione di una nuova archietettura
+# Creazione di una nuova architettura
 Come ultimo esperimento abbiamo deciso di creare una nuova architettura da zero e di addestrarla per confrontare risultati con quelli ottenuti con le reti pre-addestrate.
 
 >
@@ -180,7 +180,7 @@ lgraph = connectLayers(lgraph,"features","cat/in2");
 ```
 
 Il layer aggiuntivo viene collegato al concatenation layer con il seguente risultato:
-> ricordarsi di aggiungere l'img
+![](../img/custom_network/second_net.png)
 
 
 ## **Il caricamento dei dati e problemi derivanti**

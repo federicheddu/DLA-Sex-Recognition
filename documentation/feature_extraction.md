@@ -12,6 +12,7 @@ Nel primo esperimento abbiamo provveduto a estrarre le features dalle immagini u
 >   1. [Estrazione delle features](#estrazione-delle-features)
 >   1. [Classificazione con SVM](#classificazione-con-SVM)
 >   1. [Risultati degli esperimenti](#risultati-degli-esperimenti)
+>   1. [Analisi degli errori](#analisi-degli-errori)
 >   1. [Conclusioni](#conclusioni)
 >
 > File di riferimento: [`alex_res_vgg.mlx`](../custom_network.mlx)
@@ -28,6 +29,7 @@ Sono stati messi a disposizione dei flag di configurazione per decidere se visua
 printTrainingSet = 1;
 printTestSet = 1;
 printConfMatrix = 1;
+printErrors = 1;
 
 % === RETE NEURALE DA USARE === %
 network = 'alexnet';
@@ -87,7 +89,7 @@ end
 
 <br>
 
-## Preprocessing delle img
+## **Preprocessing delle img**
 Per ogni immagine viene effettuato un preprocessing per ottenere un input di dimensione consona alla rete scelta. Per fare ciò è stato utilizzato il metodo `augmentedImageDatastore` che permette di applicare delle trasformazioni alle immagini.  
 Le dimensioni richieste sono di 227x227 per AlexNet e VGG16 e 224x224 per ResNet-18 e ResNet-50.
 
@@ -116,7 +118,7 @@ YTest = imdsTest.Labels;
 <br>
 
 
-## Classificazione con SVM
+## **Classificazione con SVM**
 Dopo l'estrazione delle features viene utilizzato un classificatore SVM per classificare le immagini in base al sesso. Per mandare i dati in pasto al classificatore è stato necessario fare una conversione delle labels a `double`, mentre le features, oltre ad essere convertite a `double`, sono state rielaborate in una matrice sparsa per cercare di contenere lo spazio occupato in memoria.
 
 ```MATLAB
@@ -157,7 +159,7 @@ Tra le vaire opzioni dell'addestramento disponibili sono state utilizzate :
 <br>
 
 
-## Risultati degli esperimenti
+## **Risultati degli esperimenti**
 
 Possiamo notare come i risultati migliori in termini assoluti provengano dalla rete ResNet-50, seguita da VGG16 e AlexNet.  
 Resnet-50, oltre ad avere le prestazioni migliori, si è rivelata essere la seconda rete più veloce a concludere l'esperimento.
@@ -243,6 +245,15 @@ VGG16 confusion
 
 <br>
 
+## **Analisi degli errori**
+Se andiamo a vedere gli errori commessi dalla possiamo notare come illuminazione non regolare, espressioni facciali e occlusione data principalmente dai capelli lunghi facciano da padrone tra le cause di errore delle reti.  
+Di seguito abbiamo alcuni esempi di errori commessi da AlexNet (simili agli errori commessi dalle altre reti):
 
-## Conclusioni
+![](../img/results/alex_errors.png)
+
+Come possiamo notare, oltre alle cause citate prima, altre cause di errore sono foto di profilo, ricostruzione dell'immagine nella fase di preprocessing e scritte in mezzo al volto che creano del rumore.
+
+<br>
+
+## **Conclusioni**
 Come possiamo notare in tutti gli esperimenti le reti neurali sono riuscite a classificare correttamente il sesso di una persona con un'accuratezza superiore al 92.7%. Nei pochi casi in cui la rete ha sbagliato, come possiamo notare nei due esempi di ResNet-18 e di VGG16, in entrambi i casi i soggetti avevano capelli lunghi, non era visibile il pomo d'adamo e i lineamenti sono tondeggianti.
