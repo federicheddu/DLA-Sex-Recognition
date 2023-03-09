@@ -100,7 +100,13 @@ Contiene 202.599 immagini di volti in cinque posizioni di riferimento, con 40 an
 
 CelebA include molte immagini diverse che coprono varie pose e variazioni di sfondo. Fornisce annotazioni dettagliate per le immagini utili per la formazione di modelli di apprendimento automatico e di visione artificiale.
 
+![](img/dataset_example.png)
+
 Nel nostro caso è stata utilizzata la versione [Align & Cropped](https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg?resourcekey=0-rJlzl934LzC-Xp28GeIBzQ) che contiene le immagini già pulite, con le facce allineate e centrata.
+
+![](img/dataset_partition.png)
+
+Il dataset non risulta particolarmente sbilanciato, quindi non è stato optato per un ribilanciamento del dataset.
 
 Per la preparazione e l'utilizzo del dataset rimandiamo alle istruzioni conenute nei paragrafo [[Utilizzo del progetto](#utilizzo-del-progetto)].
 
