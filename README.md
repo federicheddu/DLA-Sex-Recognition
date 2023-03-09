@@ -158,4 +158,5 @@ Gli esperimenti sono stati eseguiti su un computer con le seguenti caratteristic
 - CPU: Intel i9-7920X
 - GPU: NVIDIA GeForce GTX 2080 Ti x2
 - RAM: 128GB
+
 È possibile che alcuni esperimenti non siano eseguibili o risultino molto lenti su computer con meno risorse in quanto si tratta di un dataset di grosse dimensioni.
