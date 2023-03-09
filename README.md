@@ -25,6 +25,56 @@
 >    - [Esecuzione degli esperimenti](#esecuzione-degli-esperimenti)
 > 1. [Hardware e limitazioni](#hardware-e-limitazioni)
 
+
+```
+STRUTTURA DELLA REPOSITORY
+·
+│
+│ FILE ESPERIMENTI
+├── alex_res_vgg.mlx
+├── finetuning.mlx
+├── custom_network.mlx
+│
+│
+│ FILE C
+├── split.c
+├── features.c
+│
+│
+│ FUNZIONI SVM
+├── libsvmread.mexw64/.mexa64
+├── libsvmwrite.mexw64/.mexa64
+├── train.mexw64/.mexa64
+├── libsvm-master
+│   └── ···
+│
+│
+│ DATASET
+├── dataset
+│   ├── TrainSet_features.txt
+│   ├── TestSet_features.txt
+│   └── ValSet_features.txt
+├── metadata
+│   ├── list_attr_celeba.txt
+│   └── list_eval_partition.txt
+│
+│
+│ MARKDOWN & DOCUMENTAZIONE
+├── README.md
+├── documentation
+│   ├── networks.md
+│   ├── features_extraction.md
+│   ├── metadata_concatenation.md
+│   ├── fine_tuning.md
+│   └── new_network.md
+├── img
+│   └── ···
+│
+│ OTHER
+├── .gitignore
+└── LICENSE
+```
+
 <br>
 
 ---
