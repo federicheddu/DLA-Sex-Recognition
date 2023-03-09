@@ -84,14 +84,18 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 | **P Female**  |  97.03% <br> (11916)  |  5.8% <br> (449)      |
 | **P Male**    |  2.7% <br> (331)      |  94.2% <br> (7266)    |
 
-Di seguito possiamo osservare alcune immagini di test e la loro classificazione effettuata dalla rete:
+Di seguito possiamo osservare alcune immagini di test e la loro classificazione effettuata dalla rete, con una gradcam per evidenziare le parti dell'immagine che hanno contribuito maggiormente alla classificazione:
 
 ![](../img/custom_network/first_net_pred.png)
+![](../img/custom_network/first_net_predgrad.png)
+
+Il modello si concentra sopratutto sul viso, nella parte inferiore, e sui capelli.
 
 ## **Analisi degli errori**
 Possiamo osservare che la rete non ha commesso molti errori e i pochi che ha commesso sono stati commessi principalmente su immagini che presentavano soggetti che indossavano cappelli, quindi si presentava un problema di occlusione, oppure su immaigini che sono dovute essere pre-processate pesantemente e presentavano ricostruzione o parti nere dovute alla rotazione dell'immagine.
 
 Di seguito alcuni esempi con gradCam associata:
-![](../img/custom_network/first_net_err.png) ![](../img/custom_network/first_net_errgrad.png)
+![](../img/custom_network/first_net_err.png)
+![](../img/custom_network/first_net_errgrad.png)
 
 Gli esempi confermano come nella maggior parte delle foto si presenti un problema di occlusione, che sia una mano davanti alla faccia, un cappello o i capelli che coprono il viso. Altri probelemi riscontrati sono pose di profilo e ricostruzione dell'immagine.
