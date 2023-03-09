@@ -9,18 +9,17 @@
 
 <br>
 
+
 ## **AlexNet**
-AlexNet è una rete neurale convolutiva utilizzata nella computer vision presentata nel 2012.
-AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
+AlexNet è il nome dato a un'architettura di rete neurale convoluzionale che ha vinto il concorso LSVRC nel 2012.
+
+La LSVRC (Large Scale Visual Recognition Challenge) è una competizione in cui i team di ricerca valutano i loro algoritmi su un enorme set di immagini etichettate (da ImageNet) e competono per ottenere una maggiore accuratezza su diversi compiti di riconoscimento visivo.
 
 ![](../img/alexnet_structure.png)
 
-Nel primo strato si riceve l'immagine come input e la si ridimensiona per adattarsi alla rete neurale, successivamente i cinque strati convolutivi itilizzano filtri per estrarre le caratteristiche visive dall'immagine.  
-Ogni strato convolutivo utilizza un insieme di filtri che scorrono sull'immagine eseguendo una combinazione lineare dei valori dei pixel e producendo una nuova immaigne chiamata "*feature map*".  
-Gli strati fully connected sono due e hanno la funzione di classificare l'immagine in base alle caratteristiche estratte dai layer convolutivi.  
-Il layer di output è un layer softmax che restituisce la probabilità che l'immagine appartenga ad una delle 2 classi.
+AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
 
-AlexNet è composta da 8 strati principali, di cui i primi 5 sono convoluzionali e gli ultimi 3 sono completamente connessi.
+Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ultimo, il quele produce un output con una softmax una distribuzione di probabilità sulle sue 1000 etichette di classe disponibili come output (impostazione originaria dell'archittuttura). Il dropout viene applicato nei primi due strati completamente connessi. I neuroni degli strati completamente connessi sono collegati a tutti i neuroni dello strato precedente.
 
 - L'input è un'immagine di input RGB (rosso, verde, blu) di dimensione 224x224.
 - Nel primo strato questa immagine viene convoluta con 96 filtri di dimensione 11x11, con uno stride di 4 pixel. Ciò significa che ogni filtro scansiona l'immagine con un movimento di 4 pixel alla volta. Il risultato di questa convoluzione è una mappa di caratteristiche di dimensioni 55x55x96.
@@ -63,6 +62,24 @@ Quattro blocchi residui: dopo il primo blocco, ci sono quattro blocchi residui, 
 
 <br>
 
+## **ResNet-50**
+ResNet-50 è una rete neurale convoluzionale profonda utilizzata principalmente per la classificazione delle immagini, che è stata proposta per la prima volta nel 2015 da Kaiming He, Xiangyu Zhang, Shaoqing Ren e Jian Sun in un articolo intitolato "Deep Residual Learning for Image Recognition". La rete è stata progettata per superare il problema della scomparsa del gradiente, che si verifica quando la retropropagazione del gradiente attraverso molteplici strati della rete diventa molto difficile a causa della riduzione del gradiente.
+
+ResNet-50 è costituita da 50 strati di convoluzione, ed è composta da un insieme di blocchi di tipo "residuale", che sono progettati per consentire alla rete di imparare a saltare uno o più strati durante la trasmissione dell'informazione. Questa caratteristica rende la rete più profonda e in grado di apprendere funzioni più complesse rispetto ad altre reti neurali convoluzionali.
+
+![](../img/ResNet50Arc.png)
+
+L'architettura ResNet a 50 strati comprende i seguenti elementi, come mostrato nella tabella sotto:
+
+- Un kernel di covoluzione 7×7 insieme ad altri 64 kernel con uno stride di 2 dimensioni. 
+- Uno strato di max pooling con uno stride di 2 dimensioni. 
+- Altri 9 strati-3×3,64 kernel di convoluzione, un altro con kernel 1×1,64 e un terzo con kernel 1×1,256. Questi 3 strati vengono ripetuti 3 volte. 
+- Altri 12 strati con kernel 1×1,128, kernel 3×3.128 e kernel 1×1.512, iterati 4 volte. Altri 18 strati con core 1×1,256 e 2 core 3×3,256 e 1×1,1024, iterati 6 volte. - Altri 9 strati con core 1×1.512, core 3×3.512 e core 1×1.2048 iterati 3 volte.
+- Average pooling, seguito da uno strato completamente connesso con 1000 nodi, utilizzando la funzione di attivazione softmax.
+
+![](../img/TabResnet50.png)
+<br>
+
 ---
 
 <br>
@@ -70,13 +87,16 @@ Quattro blocchi residui: dopo il primo blocco, ci sono quattro blocchi residui, 
 ## **ResNet-18**
 ResNet-18 è una rete neurale convoluzionale relativamente meno profonda rispetto a ResNet-50.  
 È stata proposta per la prima volta nello stesso articolo che ha introdotto ResNet-50, ovvero "Deep Residual Learning for Image Recognition".
+ResNet18 è un'architettura a 72 strati con 18 strati profondi. L'architettura di questa rete mira a consentire il funzionamento di un gran numero di strati convoluzionali in maniera efficiente.
+
+L'idea principale di ResNet è l'uso di "jumping connections". Queste connessioni funzionano principalmente saltando su uno o più strati, formando scorciatoie tra questi strati. L'obiettivo dell'introduzione di queste connessioni di scorciatoia è quello di risolvere il problema predominante di vanificazione del gradiente che le reti profonde devono affrontare.
 
 ![](../img/resnet18_structure.jpg)
 
 La struttura di ResNet-18:
 
 - Input: immagini RGB di dimensione 224x224x3.
-- Primo blocco: il primo blocco è costituito da un layer di convoluzione seguito da un layer di batch normalization e un'attivazione ReLU. A differenza di ResNet-50, il primo blocco di ResNet-18 contiene solo una convoluzione invece di due.
+- Primo blocco: il primo blocco è costituito da un layer di convoluzione seguito da un layer di batch normalization e un'attivazione ReLU.
 
 Quattro blocchi residui: come per ResNet-50, ci sono quattro blocchi residui in ResNet-18. Tuttavia, ogni blocco residuo in ResNet-18 contiene solo due sotto-blocchi invece di tre o cinque come in ResNet-50.
 - Pooling globale: alla fine dell'ultimo blocco residuo, viene applicato un pooling globale sui dati di output della rete. Questo pooling globale riduce la dimensione dei dati in uscita e prepara la rete per il layer di output finale.
@@ -96,4 +116,30 @@ VGG16 prende in input immagini RGB di dimensione 224x224.
 
 ![](../img/vgg_structure.png)
 
-La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output.
+Il modello è stato addestrato sul dataset ImageNet, che contiene oltre 14 milioni di immagini appartenenti a 1.000 classi diverse, utilizzando una tecnica di ottimizzazione chiamata backpropagation. VGG-16 ha raggiunto un'accuratezza del 92,7% sul dataset di validation di ImageNet, rendendola una delle reti neurali convoluzionali più accurate al momento della sua creazione.
+
+Inoltre, VGG-16 ha anche contribuito all'avanzamento delle tecniche di trasferimento dell'apprendimento, dove i pesi pre-addestrati della rete possono essere utilizzati per risolvere altri problemi di classificazione di immagini senza dover addestrare una nuova rete da zero.
+
+La rete è composta, come suggerisci il nome, da 16 layer, 13 dei quali sono layer convolutivi, 2 sono layer fully connected e 1 è un layer di output. Ogni strato di convoluzione consiste in una serie di filtri di convoluzione che elaborano l'immagine di input per estrarne caratteristiche rilevanti, mentre i layer di pooling riducono la dimensionalità dell'output del layer precedente.
+
+Il numero 16 in VGG16 si riferisce a 16 strati con pesi. Nel VGG16 ci sono tredici strati convoluzionali, cinque strati di Max Pooling e tre strati densi, per un totale di 21 strati, ma ha solo sedici strati pesati.
+- VGG16 prende il tensore di ingresso di 224, 244 con 3 canali RGB.
+- Gli strati di convoluzione e di max pool sono disposti in modo coerente nell'intera architettura.
+- Lo strato Conv-1 ha 64 filtri, Conv-2 ha 128 filtri, Conv-3 ha 256 filtri, Conv 4 e Conv 5 hanno 512 filtri.
+- Tre livelli Fully-Connected (FC) seguono una pila di livelli convoluzionali: i primi due hanno 4096 canali ciascuno, il terzo esegue una classificazione ILSVRC a 1000 vie e contiene quindi 1000 canali (uno per ogni classe). L'ultimo strato è il livello soft-max.
+
+![](../img/vgg16Arc.png)
+
+<br>
+
+
+## **SVM Lineare**
+Le Support Vector Machine, o SVM, sono modelli di classificazione che mirano a trovare una linea di separazione delle classi che massimizzi il margine tra le classi stesse. 
+Questo obiettivo viene raggiunto utilizzando una parte minima del set di dati di addestramento, i cosiddetti vettori di supporto (da cui il nome della famiglia di modelli).
+
+![](../img/svm_structure.png)
+
+La figura mostra qual è la linea di demarcazione che massimizza il margine tra  due classi di dati. La stella visibile e i due triangoli  sono i vettori di supporto, che sono gli unici esempi nel set di dati che si trovano sul bordo. Una volta trovati, tutti gli altri esempi nel dataset sono irrilevanti per la classificazione, in quanto definiscono la linea di demarcazione e il margine. 
+I vettori di supporto rappresentano i valori di una classe più vicini alla linea di demarcazione e i valori più vicini all'altra classe. Fondamentalmente, questi sono i valori più difficili da essere classificati.
+Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice: maggiore è il margine, maggiore è la distanza tra le classi, e quindi il potenziale di  confusione.
+<br><br>
