@@ -2,7 +2,7 @@
 In questo esperimento abbiamo preso AlexNet e abbiamo fatto un finetuning, cioé un riaddestramento degli ultimi livelli della rete per adattarla al nostro problema, lasciando invariati i primi livelli della rete.
 
 >
-> TABLE OF CONTENT  
+> ### **Table of Contents**
 >
 >   1. [Flag e impostazioni](#flag-e-impostazioni)
 >   1. [Caricamento dei dati](#caricamento-dei-dati)

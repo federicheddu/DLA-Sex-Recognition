@@ -3,7 +3,7 @@
 Nel primo esperimento abbiamo provveduto a estrarre le features dalle immagini utilizzando i modelli pre-addestrati di AlexNet, ResNet-18, ResNet-50 e VGG16. Successivamente abbiamo utilizzato un classificatore SVM per classificare le immagini in base al sesso.
 
 >
-> TABLE OF CONTENT  
+> ### **Table of Contents**
 >
 >   1. [Flag e impostazioni](#flag-e-impostazioni)
 >   1. [Caricamento dei dati](#caricamento-dei-dati)

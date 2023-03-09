@@ -2,7 +2,7 @@
 Come ultimo esperimento abbiamo deciso di creare una nuova architettura da zero e di addestrarla per confrontare risultati con quelli ottenuti con le reti pre-addestrate.
 
 >
-> TABLE OF CONTENT  
+> ### **Table of Contents**
 >
 > [Creazione di una nuova architettura](#creazione-di-una-nuova-archietettura)
 >   1. [Opzioni e caricamento dei dati](#opzioni-e-caricamento-dei-dati)
