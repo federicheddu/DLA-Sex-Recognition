@@ -2,6 +2,25 @@
 
 Nel primo esperimento abbiamo provveduto a estrarre le features dalle immagini utilizzando i modelli pre-addestrati di AlexNet, ResNet-18, ResNet-50 e VGG16. Successivamente abbiamo utilizzato un classificatore SVM per classificare le immagini in base al sesso.
 
+>
+> TABLE OF CONTENT  
+>
+>   1. [Flag e impostazioni](#flag-e-impostazioni)
+>   1. [Caricamento dei dati](#caricamento-dei-dati)
+>   1. [Caricamento del modello pre-addestrato](#caricamento-del-modello-pre-addestrato)
+>   1. [Preprocessing dele img](#preprocessing-delle-img)
+>   1. [Estrazione delle features](#estrazione-delle-features)
+>   1. [Classificazione con SVM](#classificazione-con-SVM)
+>   1. [Risultati degli esperimenti](#risultati-degli-esperimenti)
+>   1. [Conclusioni](#conclusioni)
+>
+> File di riferimento: [`alex_res_vgg.mlx`](../custom_network.mlx)
+>
+
+<br>
+
+## **Flag e impostazioni**
+
 Sono stati messi a disposizione dei flag di configurazione per decidere se visualizzare o meno alcuni esempi di img, alcune img classificate con i risultati delle predizioni e la matrice di confusione. Oltre a questo è possibile decidere quale delle quattro architetture utilizzare per l'estrazione delle features.
 
 ```MATLAB

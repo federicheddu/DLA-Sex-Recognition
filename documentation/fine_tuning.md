@@ -1,6 +1,21 @@
 # Finetuning di una rete pre-addestrata
 In questo esperimento abbiamo preso AlexNet e abbiamo fatto un finetuning, cioé un riaddestramento degli ultimi livelli della rete per adattarla al nostro problema, lasciando invariati i primi livelli della rete.
 
+>
+> TABLE OF CONTENT  
+>
+>   1. [Flag e impostazioni](#flag-e-impostazioni)
+>   1. [Caricamento dei dati](#caricamento-dei-dati)
+>   1. [Caricamento della rete e ridimensionamento](#caricamento-della-rete-e-ridimensionamento)
+>   1. [Fine-tuning](#fine-tuning)
+>   1. [Risultati](#risultati)
+>   1. [Conclusioni](#conclusioni)
+>
+> File di riferimento: [`finetuning.mlx`](../finetuning.mlx)
+>
+
+<br>
+
 ## **Flag e impostazioni**
 All'inizio del file è possibile impostare alcune variabili che influenzano il comportamento del programma. Queste sono tre variabili che regolano la stampa di alcune informazioni durante l'esecuzione del programma, in maniera simile a quello fatto negli altri esperimenti.
 
@@ -102,14 +117,14 @@ Se lo mettiamo a confronto con l'esperimento di feature extraction con classific
 
 |              | **AlexNet FT** | **AlexNet FE** | **AlexNet FE w/ metadata** | **AlexNet w/ metadata & norm** |
 | -----------  | -------------  | -------------- | -------------------------- | ------------------------------ |
-| **Accuracy** | 96.59          | 93.29%         | 96.36%                     | 96.37%                         |
+| **Accuracy** | 96.59%         | 93.29%         | 96.36%                     | 96.37%                         |
 | **Delta**    | /              | -3.3%          | -0.23%                     | -0.22%                         |
 
 Se prendiamo in considerazione tutti gli altri esperimenti effettuati in precedenza possiamo notare che il fine-tuning raggiunge un accuracy superiore della maggior parte degli esperimenti, a parte qualche eccezione, sempre ascrivibile agli esperimenti con l'utilizzo dei metadati.
 
 |              | **AlexNet FT** | **ResNet-50 FE w/ metadata** | **ResNet-50 w/ metadata & norm** | **VGG16 w/ metadata & norm** |
 | -----------  | -------------  | ---------------------------- | -------------------------------- | ---------------------------- |
-| **Accuracy** | 96.59          | 96.91%                       | 96.97%                           | 96.64%                       |
+| **Accuracy** | 96.59%         | 96.91%                       | 96.97%                           | 96.64%                       |
 | **Delta**    | /              | +0.32%                       | +0.38%                           | +0.05%                       |
 
 Il miglior risultato di feature extraction e classificazione SVM ottenuto senza l'utilizzo dei metadati è stato quello ottenuto con ResNet-50, con un accuracy del 94.76% sul test set, il che lo pone l'1.83% sotto il risultato ottenuto con il fine-tuning di AlexNet.
