@@ -21,19 +21,27 @@ AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fu
 
 Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ultimo, il quele produce un output con una softmax una distribuzione di probabilità sulle sue 1000 etichette di classe disponibili come output (impostazione originaria dell'archittuttura). Il dropout viene applicato nei primi due strati completamente connessi. I neuroni degli strati completamente connessi sono collegati a tutti i neuroni dello strato precedente.
 
-- L'input è un'immagine di input RGB (rosso, verde, blu) di dimensione 224x224.
-- Nel primo strato questa immagine viene convoluta con 96 filtri di dimensione 11x11, con uno stride di 4 pixel. Ciò significa che ogni filtro scansiona l'immagine con un movimento di 4 pixel alla volta. Il risultato di questa convoluzione è una mappa di caratteristiche di dimensioni 55x55x96.
-- Il secondo strato è una mappa di caratteristiche ottenuta convolvendo la mappa di caratteristiche del primo strato con 256 filtri di dimensione 5x5, con uno stride di 1 pixel. Il risultato di questa convoluzione è una mappa di caratteristiche di dimensioni 27x27x256.
-- Il terzo strato è un layer di normalizzazione locale (local response normalization) che serve a limitare l'attivazione dei neuroni adiacenti.
-- Il quarto strato è ottenuto convolvendo la mappa di caratteristiche del terzo strato con 384 filtri di dimensione 3x3, sempre con uno stride di 1 pixel. Il risultato di questa convoluzione è una mappa di caratteristiche di dimensioni 13x13x384.
-- Il quinto strato è ottenuto convolvendo la mappa di caratteristiche del quarto strato con 384 filtri di dimensione 3x3, con uno stride di 1 pixel. Il risultato di questa convoluzione è una mappa di caratteristiche di dimensioni 13x13x384.
-- Il sesto strato è un layer di normalizzazione locale come il terzo.
-- Il settimo strato è un layer completamente connesso composto da 4096 neuroni.
-- L'ottavo strato è un altro layer completamente connesso composto da 4096 neuroni.
-- l'output di AlexNet è costituito da un layer completamente connesso con un neurone per ogni classe possibile, in questo caso 1000, che restituisce la probabilità di appartenenza dell'immagine a ciascuna classe.
+### Sezione di Convoluzione e Maxpooling
+![](../img/Alexnet0.png)
 
-Inoltre, AlexNet utilizza anche tecniche di regolarizzazione, come la regolarizzazione L2 e il dropout, per prevenire l'overfitting durante l'addestramento.
+- L'input: costituito da immagini di dimensioni 227X227X3.
+- Primo strato di convoluzione: con 96 filtri di dimensione 11X11 con stride 4 (con stride si indica il numero di posizioni di cui si sposta ogni volta il filtro o il kernel lungo l'input). La funzione di attivazione utilizzata in questo strato è relu. La mappa delle caratteristiche in uscita è 55X55X96. Inoltre, il numero di filtri diventa il canale nella feature map di output.
+- Primo livello di Maxpooling: di dimensioni 3X3 e stride 2. Si ottiene quindi la mappa di caratteristiche risultante con dimensioni 27X27X96.
+- Seconda operazione di convoluzione: questa volta la dimensione del filtro è ridotta a 5X5 e abbiamo 256 filtri di questo tipo. Lo stride è 1 e il padding 2. La funzione di attivazione utilizzata è ancora una volta relu. Ora la dimensione di uscita ottenuta è 27X27X256.
+- Secondo livello di max-pooling: di dimensioni 3X3 con stride 2. La mappa di caratteristiche risultante è di forma 13X13X256.
+- Terza operazione di convoluzione: con 384 filtri di dimensione 3X3 stride 1 e anche padding 1. Anche in questo caso la funzione di attivazione utilizzata è relu. La features map in uscita è di dimensione 13X13X384.
+- Quarta operazione di convoluzione: con 384 filtri di dimensione 3X3. Lo stride e il padding sono pari a 1. Inoltre, la funzione di attivazione utilizzata è relu. Ora la dimensione dell'uscita rimane invariata, cioè 13X13X384.
+- Quinto e ultimo strato di convoluzione: di dimensioni 3X3 con 256 filtri di questo tipo. Lo stride e il padding sono impostati a uno e anche la funzione di attivazione è relu. La mappa di caratteristiche risultante è di forma 13X13X256.
+- Terzo livello di max-pooling: di dimensioni 3X3 e passo 2. Il risultato è una feature map di dimensione 6X6X256.
 
+### Sezione fully connected e di Dropout
+![](../img/Alexnet1.png)
+
+- Primo livello di Dropout. Il tasso è impostato a 0,5.
+- Primo strato fully connected con una funzione di attivazione relu. La dimensione dell'uscita è 4096. 
+- Secondo strato di Dropout con un tasso fissato a 0,5.
+- Secondo strato fully connected con 4096 neuroni e attivazione relu.
+- Infine, abbiamo il terzo e ultimo strato fully connected o strato di output con 1000 neuroni, poiché si hanno 10000 classi nel set di dati. La funzione di attivazione utilizzata in questo strato è Softmax.
 <br>
 
 ---
