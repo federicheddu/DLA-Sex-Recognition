@@ -4,8 +4,9 @@
 > - [AlexNet](#alexnet)
 > - [ResNet-18](#resnet-18)
 > - [ResNet-50](#resnet-50)
-> - [VGG16](#vgg16)
+> - [VGG-16](#vgg-16)
 > - [SVM](#svm)
+> - [SGDM](#sgdm)
 
 <br>
 
@@ -120,13 +121,36 @@ Il numero 16 in VGG16 si riferisce a 16 strati con pesi. Nel VGG16 ci sono tredi
 <br>
 
 
-## **SVM Lineare**
+## **SVM**
 Le Support Vector Machine, o SVM, sono modelli di classificazione che mirano a trovare una linea di separazione delle classi che massimizzi il margine tra le classi stesse. 
 Questo obiettivo viene raggiunto utilizzando una parte minima del set di dati di addestramento, i cosiddetti vettori di supporto (da cui il nome della famiglia di modelli).
 
-![](../img/svm_structure.png)
+<div align="center">
+    <img src="../img/svm_structure.png">
+</div>
 
 La figura mostra qual è la linea di demarcazione che massimizza il margine tra  due classi di dati. La stella visibile e i due triangoli  sono i vettori di supporto, che sono gli unici esempi nel set di dati che si trovano sul bordo. Una volta trovati, tutti gli altri esempi nel dataset sono irrilevanti per la classificazione, in quanto definiscono la linea di demarcazione e il margine. 
 I vettori di supporto rappresentano i valori di una classe più vicini alla linea di demarcazione e i valori più vicini all'altra classe. Fondamentalmente, questi sono i valori più difficili da essere classificati.
 Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice: maggiore è il margine, maggiore è la distanza tra le classi, e quindi il potenziale di  confusione.
+<br>
+
+## **SGDM**
+L'acronimo sta per "Stochastic Gradient Descent with Momentum, il quale è un algoritmo di ottimizzazione che può oscillare lungo il percorso di discesa ripida verso l'ottimale. L'aggiunta di un termine di momento aggiunge una frazione della direzione del passo precedente all'attuale direzione di discesa del gradiente, aiutando l'algoritmo a superare le aree di plateau e raggiungere più rapidamente la zona di minimo dell'errore, il momento viene specificato come scalare da 0 a 1. Un valore di 0 significa nessun contributo del passo precedente, mentre un valore di 1 significa il massimo contributo del passo precedente.
+
+L'aggiornamento stocastico del gradiente discendente con slancio (SGDM) è:
+<br>
+<div align="center">
+    <img src="../img/sgdm.PNG">
+</div>
+<br>
+dove γ determina il contributo del passo di all'iterazione corrente.
+
+In pratica, durante il training di una rete neurale con SGDM, l'ottimizzatore calcola il gradiente dell'errore rispetto ai parametri del modello e utilizza il valore del momento per aggiornare i parametri. Questo processo viene ripetuto per un numero di iterazioni specificato dall'utente o fino a quando l'errore raggiunge un valore minimo desiderato.
+
+L'utilizzo di SGDM può migliorare significativamente le prestazioni del modello rispetto all'utilizzo di SGD standard, soprattutto in presenza di una grande quantità di dati o di una complessità elevata del modello. Tuttavia, l'impostazione dei parametri corretti dell'ottimizzatore, come la velocità di apprendimento e il coefficiente di momento, può essere critica per ottenere i migliori risultati.
+
 <br><br>
+
+
+
+
