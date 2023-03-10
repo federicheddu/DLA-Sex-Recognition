@@ -135,7 +135,7 @@ Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice:
 <br>
 
 ## **SGDM**
-L'acronimo sta per "Stochastic Gradient Descent with Momentum, il quale è un algoritmo di ottimizzazione che può oscillare lungo il percorso di discesa ripida verso l'ottimale. L'aggiunta di un termine di momento aggiunge una frazione della direzione del passo precedente all'attuale direzione di discesa del gradiente, aiutando l'algoritmo a superare le aree di plateau e raggiungere più rapidamente la zona di minimo dell'errore, il momento viene specificato come scalare da 0 a 1. Un valore di 0 significa nessun contributo del passo precedente, mentre un valore di 1 significa il massimo contributo del passo precedente.
+L'acronimo sta per "Stochastic Gradient Descent with Momentum, è un algoritmo di ottimizzazione cui valore può oscillare lungo il percorso di discesa verso l'ottimale. L'aggiunta di un termine di momento somma una frazione della direzione del passo precedente all'attuale direzione di discesa del gradiente, aiutando l'algoritmo a superare le aree di plateau e raggiungere più rapidamente la zona di minimo dell'errore, il momento viene specificato come scalare da 0 a 1. Un valore di 0 significa nessun contributo del passo precedente, mentre un valore di 1 significa il massimo contributo del passo precedente.
 
 L'aggiornamento stocastico del gradiente discendente con slancio (SGDM) è:
 <br>
