@@ -40,27 +40,6 @@ Inoltre, AlexNet utilizza anche tecniche di regolarizzazione, come la regolarizz
 
 <br>
 
-## **ResNet-50**
-ResNet-50 è una rete neurale convoluzionale profonda utilizzata principalmente per la classificazione delle immagini, che è stata proposta per la prima volta nel 2015 da Kaiming He, Xiangyu Zhang, Shaoqing Ren e Jian Sun in un articolo intitolato "Deep Residual Learning for Image Recognition". La rete è stata progettata per superare il problema della scomparsa del gradiente, che si verifica quando la retropropagazione del gradiente attraverso molteplici strati della rete diventa molto difficile a causa della riduzione del gradiente.
-
-ResNet-50 è costituita da 50 strati di convoluzione, ed è composta da un insieme di blocchi di tipo "residuale", che sono progettati per consentire alla rete di imparare a saltare uno o più strati durante la trasmissione dell'informazione. Questa caratteristica rende la rete più profonda e in grado di apprendere funzioni più complesse rispetto ad altre reti neurali convoluzionali.
-
-![](../img/resnet50_structure.png)
-
-Di seguito è riportata la struttura dettagliata di ResNet-50:
-
-- Input: immagini RGB di dimensione 224x224x3.
-- Primo blocco: il primo blocco della rete è costituito da un layer di convoluzione seguito da un layer di batch normalization e un'attivazione ReLU. Questo blocco serve per elaborare le caratteristiche di basso livello delle immagini in ingresso.
-
-Quattro blocchi residui: dopo il primo blocco, ci sono quattro blocchi residui, ciascuno dei quali è composto da una serie di sotto-blocchi. In ogni sotto-blocco, ci sono due layer di convoluzione, ognuno dei quali seguito da batch normalization e attivazione ReLU.
-- Secondo blocco: il secondo blocco è composto da due sotto-blocchi residui.
-- Terzo blocco: il terzo blocco è composto da tre sotto-blocchi residui.
-- Quarto blocco: il quarto blocco è composto da cinque sotto-blocchi residui.
-- Quinto blocco: il quinto blocco è composto da tre sotto-blocchi residui.
-- Pooling globale: alla fine del quinto blocco, viene applicato un pooling globale sui dati di output della rete. Questo pooling globale riduce la dimensione dei dati in uscita e prepara la rete per il layer di output finale.
-- Layer di output: infine, viene aggiunto un layer di output completamente connesso, costituito da un singolo neurone, che calcola la probabilità che l'immagine in ingresso appartenga a una delle classi di destinazione.
-
-<br>
 
 ## **ResNet-50**
 ResNet-50 è una rete neurale convoluzionale profonda utilizzata principalmente per la classificazione delle immagini, che è stata proposta per la prima volta nel 2015 da Kaiming He, Xiangyu Zhang, Shaoqing Ren e Jian Sun in un articolo intitolato "Deep Residual Learning for Image Recognition". La rete è stata progettata per superare il problema della scomparsa del gradiente, che si verifica quando la retropropagazione del gradiente attraverso molteplici strati della rete diventa molto difficile a causa della riduzione del gradiente.
