@@ -79,7 +79,7 @@ ResNet18 è un'architettura a 72 strati con 18 strati profondi. L'architettura d
 
 L'idea principale di ResNet è l'uso di "jumping connections". Queste connessioni funzionano principalmente saltando su uno o più strati, formando scorciatoie tra questi strati. L'obiettivo dell'introduzione di queste connessioni di scorciatoia è quello di risolvere il problema predominante di vanificazione del gradiente che le reti profonde devono affrontare.
 
-![](../img/resnet18_structure.jpg)
+
 
 La struttura di ResNet-18:
 
