@@ -4,8 +4,8 @@
 >
 > NETWORKS
 > - [AlexNet](#alexnet)
-> - [ResNet-18](#resnet-18)
 > - [ResNet-50](#resnet-50)
+> - [ResNet-18](#resnet-18)
 > - [VGG-16](#vgg-16)
 >
 > CLASSIFICATORE
