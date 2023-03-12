@@ -62,7 +62,7 @@ STRUTTURA DELLA REPOSITORY
 │ MARKDOWN & DOCUMENTAZIONE
 ├── README.md
 ├── documentation
-│   ├── networks.md
+│   ├── backgound.md
 │   ├── features_extraction.md
 │   ├── metadata_concatenation.md
 │   ├── fine_tuning.md
@@ -123,7 +123,7 @@ Sonos stati effettuati diversi esperimenti, ognuno con un approccio diverso:
 
 Di seguito i link alla documentazione completa del progetto:
 > ### **Documentazione**
-> - [teoria] [Stato dell'arte](documentation/networks.md)
+> - [teoria] [Background](documentation/background.md)
 > - [esperimento] [Feature Extraction & SVM](documentation/feature_extraction.md)
 > - [esperimento] [Integrazione dei metadati](documentation/metadata_concatenation.md)
 > - [esperimento] [Fine Tuning di AlexNet](documentation/fine_tuning.md)
