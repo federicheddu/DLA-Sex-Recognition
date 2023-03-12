@@ -1,15 +1,26 @@
 # Reti utilizzate
 
 > ### **Table of Contents**
+>
+> NETWORKS
 > - [AlexNet](#alexnet)
 > - [ResNet-18](#resnet-18)
 > - [ResNet-50](#resnet-50)
 > - [VGG-16](#vgg-16)
+>
+> CLASSIFICATORE
 > - [SVM](#svm)
+>
+> OTTIMIZZATORE
 > - [SGDM](#sgdm)
 
 <br>
+<br>
 
+# Networks
+In questa sezione della documentazione andremo ad analizzare le varie reti utilizzate in tutti gli esperimenti del progetto.
+
+<br>
 
 ## **AlexNet**
 AlexNet è il nome dato a un'architettura di rete neurale convoluzionale che ha vinto il concorso LSVRC nel 2012.
@@ -22,7 +33,7 @@ AlexNet consiste in 8 layer, 5 dei quali sono layer convolutivi, 2 sono layer fu
 
 Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ultimo, il quele produce un output con una softmax una distribuzione di probabilità sulle sue 1000 etichette di classe disponibili come output (impostazione originaria dell'archittuttura). Il dropout viene applicato nei primi due strati completamente connessi. I neuroni degli strati completamente connessi sono collegati a tutti i neuroni dello strato precedente.
 
-### Sezione di Convoluzione e Maxpooling
+### **Sezione di Convoluzione e Maxpooling**
 ![](../img/Alexnet0.png)
 
 - L'input: costituito da immagini di dimensioni 227X227X3.
@@ -35,7 +46,7 @@ Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ul
 - Quinto e ultimo strato di convoluzione: di dimensioni 3X3 con 256 filtri di questo tipo. Lo stride e il padding sono impostati a uno e anche la funzione di attivazione è relu. La mappa di caratteristiche risultante è di forma 13X13X256.
 - Terzo livello di max-pooling: di dimensioni 3X3 e passo 2. Il risultato è una feature map di dimensione 6X6X256.
 
-### Sezione fully connected e di Dropout
+### **Sezione fully connected e di Dropout**
 ![](../img/Alexnet1.png)
 
 - Primo livello di Dropout. Il tasso è impostato a 0,5.
@@ -43,9 +54,7 @@ Alla fine di ogni strato, viene eseguita l'attivazione ReLu, tranne che per l'ul
 - Secondo strato di Dropout con un tasso fissato a 0,5.
 - Secondo strato fully connected con 4096 neuroni e attivazione relu.
 - Infine, abbiamo il terzo e ultimo strato fully connected o strato di output con 1000 neuroni, poiché si hanno 10000 classi nel set di dati. La funzione di attivazione utilizzata in questo strato è Softmax.
-<br>
 
----
 
 <br>
 
@@ -66,11 +75,10 @@ L'architettura ResNet a 50 strati comprende i seguenti elementi, come mostrato n
 - Average pooling, seguito da uno strato completamente connesso con 1000 nodi, utilizzando la funzione di attivazione softmax.
 
 ![](../img/TabResnet50.png)
-<br>
 
----
 
 <br>
+
 
 ## **ResNet-18**
 ResNet-18 è una rete neurale convoluzionale relativamente meno profonda rispetto a ResNet-50.  
@@ -92,11 +100,9 @@ Quattro blocchi residui: come per ResNet-50, ci sono quattro blocchi residui in 
 
 In generale, la struttura di ResNet-18 è simile a quella di ResNet-50, ma con meno blocchi residui e meno strati convoluzionali all'interno di ogni blocco. Questa architettura è stata progettata per essere più leggera e più veloce rispetto a ResNet-50, ma comunque abbastanza profonda da ottenere buone prestazioni nella classificazione delle immagini.
 
-<br>
-
----
 
 <br>
+
 
 ## **VGG-16**
 VGG16 è un modello di rete neurale convoluzionale presentato nel 2014 dall'Università di Oxford.
@@ -119,7 +125,12 @@ Il numero 16 in VGG16 si riferisce a 16 strati con pesi. Nel VGG16 ci sono tredi
 ![](../img/vgg16Arc.png)
 
 <br>
+<br>
 
+# Classificatore
+Qui si analizza il classificatore utilizzato negli esperimenti di feature extraction.
+
+<br>
 
 ## **SVM**
 Le Support Vector Machine, o SVM, sono modelli di classificazione che mirano a trovare una linea di separazione delle classi che massimizzi il margine tra le classi stesse. 
@@ -132,6 +143,13 @@ Questo obiettivo viene raggiunto utilizzando una parte minima del set di dati di
 La figura mostra qual è la linea di demarcazione che massimizza il margine tra  due classi di dati. La stella visibile e i due triangoli  sono i vettori di supporto, che sono gli unici esempi nel set di dati che si trovano sul bordo. Una volta trovati, tutti gli altri esempi nel dataset sono irrilevanti per la classificazione, in quanto definiscono la linea di demarcazione e il margine. 
 I vettori di supporto rappresentano i valori di una classe più vicini alla linea di demarcazione e i valori più vicini all'altra classe. Fondamentalmente, questi sono i valori più difficili da essere classificati.
 Maggiore è il margine, migliore è la generalizzazione. Il motivo è  semplice: maggiore è il margine, maggiore è la distanza tra le classi, e quindi il potenziale di  confusione.
+
+<br>
+<br>
+
+# Ottimizzatore
+In tutti gli esperimenti che lo richiedevano è stato utilizzato il seguente ottimizzatore, quindi ne vediamo le caratteristiche tecniche.
+
 <br>
 
 ## **SGDM**
