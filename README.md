@@ -126,7 +126,7 @@ Di seguito i link alla documentazione completa del progetto:
 > - [teoria] [Background](documentation/background.md)
 > - [esperimento] [Feature Extraction & SVM](documentation/feature_extraction.md)
 > - [esperimento] [Integrazione dei metadati](documentation/metadata_concatenation.md)
-> - [esperimento] [Fine Tuning di AlexNet](documentation/fine_tuning.md)
+> - [esperimento] [Fine Tuning di AlexNet e Resnet50](documentation/fine_tuning.md)
 > - [esperimento] [Creazione di una rete da zero](documentation/custom_network.md)
 >
 > *[Link alla cartella con tutta la documentazione](documentation/)*
