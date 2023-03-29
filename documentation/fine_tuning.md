@@ -140,6 +140,10 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 
 <table>
 
+<tr>
+<th align=center colspan=2>Results</th>
+</tr>
+
 <tr align=center>
 <th align=center><b>Alexnet FT</b></th>
 <th align=center><b>Resnet50 FT</b></th>
@@ -168,11 +172,10 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 </td>
 </tr>
 
-</table>
 
-<br>
-
-<table>
+<tr>
+<th align=center colspan=2>Confusion Maps</th>
+</tr>
 
 <tr>
 <th align=center><b>Alexnet CM</b></th>
