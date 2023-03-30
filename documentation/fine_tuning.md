@@ -9,10 +9,10 @@ In questo esperimento abbiamo preso AlexNet e abbiamo fatto un finetuning, cioé
 >   1. [Caricamento della rete e ridimensionamento](#caricamento-della-rete-e-ridimensionamento)
 >   1. [Fine-tuning](#fine-tuning)
 >   1. [Risultati](#risultati)
->   1. [Analisi degli errori con l'utilizzo dei metadati](#analisi-degli-errori-con-lutilizzo-dei-metadati)
+>   1. [Analisi dei risultati e degli errori con l'utilizzo dei metadati](#analisi-dei-risultati-e-degli-errori-con-lutilizzo-dei-metadati)
 >   1. [Conclusioni](#conclusioni)
 >
-> File di riferimento: [`finetuning.mlx`](../finetuning.mlx)
+> File di riferimento: [`finetuning.mlx`](../finetuning.mlx)  +  [`finetuning_analysis.mlx`](../finetuning.mlx)
 >
 
 <br>
@@ -277,9 +277,15 @@ Al contrario Resnet possiamo notare come si concentri di più sul centro del vis
 
 <br>
 
-## **Analisi degli errori con l'utilizzo dei metadati**
+## **Analisi dei risultati e degli errori con l'utilizzo dei metadati**
 
 Per effettuare un analisi degli errori ci siamo concentrati sul modello che ha avuto performance migliori, quindi su ResNet-50.
+
+<br>
+
+> **NB:** il file di riferimento per questa sezione è [`finetuning_analysis.mlx`](../finetuning_analysis.mlx)
+
+<br>
 
 Inizialmente siamo andati a vedere gli errori dal punto di vista generale.
 

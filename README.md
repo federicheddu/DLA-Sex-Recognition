@@ -33,6 +33,7 @@ STRUTTURA DELLA REPOSITORY
 │ FILE ESPERIMENTI
 ├── alex_res_vgg.mlx
 ├── finetuning.mlx
+├── finetuning_analysis.mlx
 ├── custom_network.mlx
 │
 │
