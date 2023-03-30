@@ -115,7 +115,7 @@ options = trainingOptions ('sgdm',...
     'InitialLearnRate', 1e-4, ...
     'Shuffle', 'every-epoch'
     'ValidationData', augimsValidation, ...
-    'ValidationFrequency'3, ...
+    'ValidationFrequency', 3, ...
     'Verbose', false, ...
     'Plots', 'training-progress',...
     'ExecutionEnvironment', 'gpu');
@@ -151,23 +151,53 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 
 <td>
 
-|               |                 |
-| -----------   | --------------- |
-| **Acc. Val**  | 97.43%          |
-| **Acc. Test** | 96.59%          |
-| **Rateo**     | 19281/19962     |  
-| **Time**      | 28071.5158s <br> (≈ 7.8h)    |
+<table>
+<tr>
+<td><b>Acc. Val</b></td>
+<td>97.43%</td>
+</tr>
+
+<tr>
+<td><b>Acc. Test</b></td>
+<td>96.59%</td>
+</tr>
+
+<tr>
+<td><b>Rateo</b></td>
+<td>19281/19962</td>
+</tr>
+
+<tr>
+<td><b>Time</b></td>
+<td>28071.5158s <br> (≈ 7.8h)</td>
+</tr>
+</table>
 
 </td>
 
 <td>
 
-|               |                 |
-| -----------   | --------------- |
-| **Acc. Val**  | 97.63%          |
-| **Acc. Test** | 97.24%          |
-| **Rateo**     | 19412/19962     |  
-| **Time**      | 126785.6551s <br> (≈ 35.22h)   |
+<table>
+<tr>
+<td><b>Acc. Val</b></td>
+<td>97.63%</td>
+</tr>
+
+<tr>
+<td><b>Acc. Test</b></td>
+<td>97.24%</td>
+</tr>
+
+<tr>
+<td><b>Rateo</b></td>
+<td>19412/19962</td>
+</tr>
+
+<tr>
+<td><b>Time</b></td>
+<td>126785.6551s <br> (≈ 35.22h)</td>
+</tr>
+</table>
 
 </td>
 </tr>
@@ -249,7 +279,457 @@ Al contrario Resnet possiamo notare come si concentri di più sul centro del vis
 
 ## **Analisi degli errori con l'utilizzo dei metadati**
 
-TODO
+Per effettuare un analisi degli errori ci siamo concentrati sul modello che ha avuto performance migliori, quindi su ResNet-50.
+
+Inizialmente siamo andati a vedere gli errori dal punto di vista generale.
+
+<table>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+</table>
+
+Notiamo, come successo negli altri esperimenti, che molti degli errori di predizione sono causati da occlusione (mani, capelli o oggetti di fronte al viso), ricostruzione dell'immagine durante il preprocessing o espressioni facciali molto accentuate. Altre ragioni, sempre presenti tra le cause di errore nella computer vision, sono l'illuminazione scarsa/non uniforme e la prospettiva da cui viene inquadrato il soggetto dell'esperimento, tra gli esempi abbiamo un viso inquadrato dal basso.
+
+Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a nostra disposizione, le immagini con determinate caratteristiche per cercare di capire gli elementi che confondono di più il modello al momento della classificazione.
+
+<table>
+
+<!-- Calvi-->
+<tr>
+<th align=center colspan=3><b>Calvi</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_calvi_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_calvi_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Frangetta-->
+<tr>
+<th align=center colspan=3><b>Frangetta</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_frangetta_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_frangetta_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 96.53%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>98.6%<br>(2554)</td>
+<td>13.7%<br>(71)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>1.4%<br>(37)</td>
+<td>86.3%<br>(447)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Grandi labbra -->
+<tr>
+<th align=center colspan=3><b>Grandi labbra</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_glab_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_glab_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 97.58%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>99.4%<br>(4770)</td>
+<td>7.4%<br>(131)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0.6%<br>(27)</td>
+<td>92.4%<br>(1600)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Soppracciglia folte -->
+<tr>
+<th align=center colspan=3><b>Soppracciglia folte</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_soppr_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_soppr_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 98.30%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>98.8%<br>(812)</td>
+<td>1.9%<br>(34)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>1.2%<br>(10)</td>
+<td>98.1%<br>(1730)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Doppio mento -->
+<tr>
+<th align=center colspan=3><b>Doppio mento</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_dm_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_dm_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 97.26%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>95.6%<br>(130)</td>
+<td>2.4%<br>(19)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>4.4%<br>(6)</td>
+<td>97.6%<br>(758)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Occhiali -->
+<tr>
+<th align=center colspan=3><b>Occhiali</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_occhiali_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_occhiali_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 93.41%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>89.9%<br>(285)</td>
+<td>5.5%<br>(53)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>10.1%<br>(32)</td>
+<td>94.5%<br>(919)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Pizzetto -->
+<tr>
+<th align=center colspan=3><b>Pizzetto</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_pizz_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_pizz_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.45%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>NaN<br>(0)</td>
+<td>0.5%<br>(5)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>NaN<br>(0)</td>
+<td>99.5%<br>(910)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Trucco pesante -->
+<tr>
+<th align=center colspan=3><b>Trucco pesante</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_makeup_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_makeup_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.67%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>99.8%<br>(8048)</td>
+<td>59.1%<br>(13)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0.2%<br>(14)</td>
+<td>40.9%<br>(9)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Baffi-->
+<tr>
+<th align=center colspan=3><b>Baffi</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_baffi_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_baffi_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>NaN%<br>(0)</td>
+<td>1.7%<br>(13)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>NaN<br>(0)</td>
+<td>98.3%<br>(759)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Stempiatura-->
+<tr>
+<th align=center colspan=3><b>Stempiatura</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_stemp_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_stemp_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 96.46</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>96.2%<br>(678)</td>
+<td>3.3%<br>(33)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>3.8%<br>(27)</td>
+<td>96.7%<br>(956)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Orecchini -->
+<tr>
+<th align=center colspan=3><b>Orecchini</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_orecchini_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_orecchini_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 98.23%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>99.1%<br>(3907)</td>
+<td>20.3%<br>(37)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0.9%<br>(36)</td>
+<td>79.7%<br>(145)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Cappello -->
+<tr>
+<th align=center colspan=3><b>Cappello</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_cap_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_cap_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 94.76%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>94.2%<br>(261)</td>
+<td>5.0%<br>(28)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>5.8%<br>(16)</td>
+<td>95.0%<br>(534)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Rossetto -->
+<tr>
+<th align=center colspan=3><b>Rossetto</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_ross_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_ross_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.41%</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>99.7%<br>(10337)</td>
+<td>57.4%<br>(27)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0.3%<br>(34)</td>
+<td>42.6%<br>(20)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+Come possiamo notare dai test, elementi come rossetto, trucco pesante, orecchini e frangetta aumentano l'errore nella predizione maschile, mentre elementi come occhiali aumentano l'errore per quanto riguarda la predizione femminile.
 
 <br>
 
