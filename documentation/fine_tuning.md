@@ -153,23 +153,23 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 
 <table>
 <tr>
-<td><b>Acc. Val</b><td>
-<td>97.43%<td>
+<td><b>Acc. Val</b></td>
+<td>97.43%</td>
 </tr>
 
 <tr>
-<td><b>Acc. Test</b><td>
-<td>96.59%<td>
+<td><b>Acc. Test</b></td>
+<td>96.59%</td>
 </tr>
 
 <tr>
-<td><b>Rateo</b><td>
-<td>19281/19962<td>
+<td><b>Rateo</b></td>
+<td>19281/19962</td>
 </tr>
 
 <tr>
-<td><b>Time</b><td>
-<td>28071.5158s <br> (≈ 7.8h)<td>
+<td><b>Time</b></td>
+<td>28071.5158s <br> (≈ 7.8h)</td>
 </tr>
 </table>
 
@@ -179,23 +179,23 @@ Dopo aver addestrato la rete è stato calcolato l'errore sul test set e la matri
 
 <table>
 <tr>
-<td><b>Acc. Val</b><td>
-<td>97.63%<td>
+<td><b>Acc. Val</b></td>
+<td>97.63%</td>
 </tr>
 
 <tr>
-<td><b>Acc. Test</b><td>
-<td>97.24%<td>
+<td><b>Acc. Test</b></td>
+<td>97.24%</td>
 </tr>
 
 <tr>
-<td><b>Rateo</b><td>
-<td>19412/19962<td>
+<td><b>Rateo</b></td>
+<td>19412/19962</td>
 </tr>
 
 <tr>
-<td><b>Time</b><td>
-<td>126785.6551s <br> (≈ 35.22h)<td>
+<td><b>Time</b></td>
+<td>126785.6551s <br> (≈ 35.22h)</td>
 </tr>
 </table>
 
