@@ -12,7 +12,7 @@ In questo esperimento abbiamo preso AlexNet e abbiamo fatto un finetuning, cioé
 >   1. [Analisi dei risultati e degli errori con l'utilizzo dei metadati](#analisi-dei-risultati-e-degli-errori-con-lutilizzo-dei-metadati)
 >   1. [Conclusioni](#conclusioni)
 >
-> File di riferimento: [`finetuning.mlx`](../finetuning.mlx)  +  [`finetuning_analysis.mlx`](../finetuning.mlx)
+> File di riferimento: [`finetuning.mlx`](../finetuning.mlx)  +  [`finetuning_analysis.mlx`](../finetuning_analysis.mlx)
 >
 
 <br>
