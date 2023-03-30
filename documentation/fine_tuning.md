@@ -324,12 +324,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>100%<br>(1)</td>
 <td>0.2%<br>(1)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>0%<br>(0)</td>
 <td>99.8%<br>(421)</td>
 </tr>
@@ -357,12 +357,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>98.6%<br>(2554)</td>
 <td>13.7%<br>(71)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>1.4%<br>(37)</td>
 <td>86.3%<br>(447)</td>
 </tr>
@@ -390,12 +390,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>99.4%<br>(4770)</td>
 <td>7.4%<br>(131)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>0.6%<br>(27)</td>
 <td>92.4%<br>(1600)</td>
 </tr>
@@ -423,12 +423,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>98.8%<br>(812)</td>
 <td>1.9%<br>(34)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>1.2%<br>(10)</td>
 <td>98.1%<br>(1730)</td>
 </tr>
@@ -456,12 +456,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>95.6%<br>(130)</td>
 <td>2.4%<br>(19)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>4.4%<br>(6)</td>
 <td>97.6%<br>(758)</td>
 </tr>
@@ -489,12 +489,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>89.9%<br>(285)</td>
 <td>5.5%<br>(53)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>10.1%<br>(32)</td>
 <td>94.5%<br>(919)</td>
 </tr>
@@ -522,12 +522,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>NaN<br>(0)</td>
 <td>0.5%<br>(5)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>NaN<br>(0)</td>
 <td>99.5%<br>(910)</td>
 </tr>
@@ -555,12 +555,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>99.8%<br>(8048)</td>
 <td>59.1%<br>(13)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>0.2%<br>(14)</td>
 <td>40.9%<br>(9)</td>
 </tr>
@@ -588,12 +588,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>NaN%<br>(0)</td>
 <td>1.7%<br>(13)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>NaN<br>(0)</td>
 <td>98.3%<br>(759)</td>
 </tr>
@@ -621,12 +621,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>96.2%<br>(678)</td>
 <td>3.3%<br>(33)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>3.8%<br>(27)</td>
 <td>96.7%<br>(956)</td>
 </tr>
@@ -654,12 +654,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>99.1%<br>(3907)</td>
 <td>20.3%<br>(37)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>0.9%<br>(36)</td>
 <td>79.7%<br>(145)</td>
 </tr>
@@ -687,12 +687,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>94.2%<br>(261)</td>
 <td>5.0%<br>(28)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>5.8%<br>(16)</td>
 <td>95.0%<br>(534)</td>
 </tr>
@@ -720,12 +720,12 @@ Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a n
 <td><b>T Mal</b></td>
 </tr>
 <tr>
-<td><b>T Fem</b></td>
+<td><b>P Fem</b></td>
 <td>99.7%<br>(10337)</td>
 <td>57.4%<br>(27)</td>
 </tr>
 <tr>
-<td><b>T Mal</b></td>
+<td><b>P Mal</b></td>
 <td>0.3%<br>(34)</td>
 <td>42.6%<br>(20)</td>
 </tr>
