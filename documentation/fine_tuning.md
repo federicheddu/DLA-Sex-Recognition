@@ -115,7 +115,7 @@ options = trainingOptions ('sgdm',...
     'InitialLearnRate', 1e-4, ...
     'Shuffle', 'every-epoch'
     'ValidationData', augimsValidation, ...
-    'ValidationFrequency'3, ...
+    'ValidationFrequency', 3, ...
     'Verbose', false, ...
     'Plots', 'training-progress',...
     'ExecutionEnvironment', 'gpu');
@@ -249,7 +249,455 @@ Al contrario Resnet possiamo notare come si concentri di più sul centro del vis
 
 ## **Analisi degli errori con l'utilizzo dei metadati**
 
-TODO
+Per effettuare un analisi degli errori ci siamo concentrati sul modello che ha avuto performance migliori, quindi su ResNet-50.
+
+Inizialmente siamo andati a vedere gli errori dal punto di vista generale.
+
+<table>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+</table>
+
+Successivamente abbiamo provato ad isolare, grazie all'utilizzo dei metadati a nostra disposizione, le immagini con determinate caratteristiche per cercare di capire gli elementi che confondono di più il modello al momento della classificazione.
+
+<table>
+
+<!-- Calvi-->
+<tr>
+<th align=center colspan=3><b>Calvi</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_calvi_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_calvi_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Frangetta-->
+<tr>
+<th align=center colspan=3><b>Frangetta</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_frangetta_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_frangetta_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Grandi labbra -->
+<tr>
+<th align=center colspan=3><b>Grandi labbra</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Soppracciglia folte -->
+<tr>
+<th align=center colspan=3><b>Soppracciglia folte</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Doppio mento -->
+<tr>
+<th align=center colspan=3><b>Doppio mento</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Occhiali -->
+<tr>
+<th align=center colspan=3><b>Occhiali</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Pizzetto -->
+<tr>
+<th align=center colspan=3><b>Pizzetto</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Trucco pesante -->
+<tr>
+<th align=center colspan=3><b>Trucco pesante</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Baffi-->
+<tr>
+<th align=center colspan=3><b>Baffi</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Stempiatura-->
+<tr>
+<th align=center colspan=3><b>Stempiatura</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Orecchini -->
+<tr>
+<th align=center colspan=3><b>Orecchini</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Cappello -->
+<tr>
+<th align=center colspan=3><b>Cappello</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<!-- Rossetto -->
+<tr>
+<th align=center colspan=3><b>Rossetto</b></th>
+</tr>
+<tr>
+<td>
+<img src="../img/finetuning/fine_errors_pred.png"/>
+</td>
+<td>
+<img src="../img/finetuning/fine_errors_grad.png"/>
+</td>
+<td>
+<table>
+<th align=center colspan=3>Accuracy: 99.76</th>
+<tr>
+<td></td>
+<td><b>T Fem</b></td>
+<td><b>T Mal</b></td>
+</tr>
+<tr>
+<td><b>T Fem</b></td>
+<td>100%<br>(1)</td>
+<td>0.2%<br>(1)</td>
+</tr>
+<tr>
+<td><b>T Mal</b></td>
+<td>0%<br>(0)</td>
+<td>99.8%<br>(421)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+Possiamo notare come...
 
 <br>
 
