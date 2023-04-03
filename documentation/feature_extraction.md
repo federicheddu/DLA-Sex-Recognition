@@ -94,7 +94,7 @@ Per ogni immagine viene effettuato un preprocessing per ottenere un input di dim
 Le dimensioni richieste sono di 227x227 per AlexNet e VGG16 e 224x224 per ResNet-18 e ResNet-50.
 
 ```MATLAB
-inputSize = net. Layers(1). InputSize;
+inputSize = net.Layers(1).InputSize;
 augimdsTrain = augmentedImageDatastore(inputSize(1:2), imdsTrain);
 augimdsTest = augmentedImageDatastore(inputSize(1:2), imdsTest);
 ```
@@ -108,9 +108,9 @@ A questo punto vengono estratte le feature utilizzando il metodo `activations` c
 Oltre a questo sono state salvate le labels associate alle immagini per poterle utilizzare per la classificazione.
 
 ```MATLAB
-featuresTrain1 = activations (net, augimdsTrain, layer, 'Outputs', 'rows', 'ExecutionEnvironment', env);
-featuresTest1 = activations (net, augimdsTest, layer, 'outputAs', 'rows', 'ExecutionEnvironment', env);
-Train = imdsTrain. Labels;
+featuresTrain1 = activations(net, augimdsTrain, layer, 'Outputs', 'rows', 'ExecutionEnvironment', env);
+featuresTest1 = activations(net, augimdsTest, layer, 'outputAs', 'rows', 'ExecutionEnvironment', env);
+YTrain = imdsTrain.Labels;
 YTest = imdsTest.Labels;
 ```
 
